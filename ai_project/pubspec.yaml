@@ -23,8 +23,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # Asset ဖိုင်များ (Logo၊ Offline စာအုပ်များနှင့် မေးခွန်းဟောင်း PDF လမ်းကြောင်းများ)
+  # Asset ဖိုင်များ (logo1.png အပါအဝင် assets ဖိုဒါတစ်ခုလုံးကို အလိုအလျောက် ချိတ်ဆက်ပေးပါမည်)
   assets:
     - assets/
-    - assets/books/
-    - assets/questions/
+    # - assets/books/
+    # - assets/questions/
