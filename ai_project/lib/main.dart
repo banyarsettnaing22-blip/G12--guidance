@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'services/supabase_service.dart';
 import 'data/offline_data.dart';
+import 'views/userPage.dart';
 
 // ==========================================
 // App စတင်အလုပ်လုပ်မည့် အဓိက Entry Point
@@ -27,11 +28,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Education App',
-      debugShowCheckedModeBanner: false, 
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: const Color(0xFF4A769E),
         // App တစ်ခုလုံးရှိ စာမျက်နှာတိုင်းအတွက် နောက်ခံအရောင်ကို Cyan Blue သတ်မှတ်ခြင်း
-        scaffoldBackgroundColor: const Color(0xFF1FC2D8), 
+        scaffoldBackgroundColor: const Color(0xFF1FC2D8),
       ),
       home: const LandingScreen(),
     );
@@ -42,16 +43,16 @@ class MyApp extends StatelessWidget {
 // App Logo Component
 // ==========================================
 class AppLogo extends StatelessWidget {
-  final double size; 
+  final double size;
   const AppLogo({super.key, this.size = 140});
 
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      'assets/logo1.png', 
+      'assets/logo1.png',
       width: size,
       height: size,
-      fit: BoxFit.contain, 
+      fit: BoxFit.contain,
       errorBuilder: (context, error, stackTrace) {
         return Container(
           width: size,
@@ -81,8 +82,8 @@ class Unified3DButton extends StatelessWidget {
   final double? width; // အကျယ် သတ်မှတ်ရန် (မထည့်ပါက မျက်နှာပြင်အပြည့်ယူမည်)
 
   const Unified3DButton({
-    super.key, 
-    required this.label, 
+    super.key,
+    required this.label,
     required this.onPressed,
     this.width,
   });
@@ -92,16 +93,18 @@ class Unified3DButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: width ?? double.infinity, 
+        width: width ?? double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
           color: const Color(0xFF87CE52), // အစိမ်းရောင် နောက်ခံ
           borderRadius: BorderRadius.circular(10), // ထောင့်ဝိုင်း
           boxShadow: const [
             BoxShadow(
-              color: Color(0xFF1B3B36), // အမည်း/အစိမ်းရင့်ရောင် အရိပ် (Solid Shadow)
-              offset: Offset(4, 5), 
-              blurRadius: 0, 
+              color: Color(
+                0xFF1B3B36,
+              ), // အမည်း/အစိမ်းရင့်ရောင် အရိပ် (Solid Shadow)
+              offset: Offset(4, 5),
+              blurRadius: 0,
             ),
           ],
         ),
@@ -120,7 +123,7 @@ class Unified3DButton extends StatelessWidget {
 }
 
 // ==========================================
-// 1. LANDING SCREEN 
+// 1. LANDING SCREEN
 // ==========================================
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -136,7 +139,7 @@ class LandingScreen extends StatelessWidget {
               children: [
                 const AppLogo(size: 220),
                 const SizedBox(height: 70),
-                
+
                 Unified3DButton(
                   width: 240,
                   label: 'login',
@@ -150,7 +153,7 @@ class LandingScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 24),
-                
+
                 Unified3DButton(
                   width: 240,
                   label: 'Guest',
@@ -158,7 +161,8 @@ class LandingScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const DashboardScreen(isPaidUser: false),
+                        builder: (context) =>
+                            const DashboardScreen(isPaidUser: false),
                       ),
                     );
                   },
@@ -170,7 +174,7 @@ class LandingScreen extends StatelessWidget {
                   child: const Text(
                     'forgot_password',
                     style: TextStyle(
-                      color: Color(0xFF0033CC), 
+                      color: Color(0xFF0033CC),
                       decoration: TextDecoration.underline,
                       decorationColor: Color(0xFF0033CC),
                       fontSize: 14,
@@ -212,10 +216,21 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _handleLogin() async {
-    setState(() => _isLoading = true);
-    
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
+
+    // --- အသစ်ထည့်ထားသော Shortcut Logic ---
+    // Email နှင့် Password အလွတ်ဖြစ်နေပါက UserPage သို့ တိုက်ရိုက်သွားမည်
+    if (email.isEmpty && password.isEmpty) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeView()),
+      );
+      return;
+    }
+    // --------------------------------------
+
+    setState(() => _isLoading = true);
 
     final isPaid = await _supabaseService.loginPaidUser(email, password);
     setState(() => _isLoading = false);
@@ -250,14 +265,18 @@ class _LoginScreenState extends State<LoginScreen> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: IconButton(
-                  icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 28,
+                  ),
                   onPressed: () => Navigator.pop(context),
                 ),
               ),
               const SizedBox(height: 20),
               const AppLogo(size: 160),
               const SizedBox(height: 40),
-              
+
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -274,7 +293,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              
+
               TextField(
                 controller: _passwordController,
                 obscureText: true,
@@ -291,13 +310,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 60),
-              
+
               _isLoading
-                  ? const Center(child: CircularProgressIndicator(color: Colors.white))
-                  : Unified3DButton(
-                      label: 'Login',
-                      onPressed: _handleLogin,
-                    ),
+                  ? const Center(
+                      child: CircularProgressIndicator(color: Colors.white),
+                    )
+                  : Unified3DButton(label: 'Login', onPressed: _handleLogin),
             ],
           ),
         ),
@@ -307,10 +325,10 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 // ==========================================
-// 3. MAIN DASHBOARD SCREEN 
+// 3. MAIN DASHBOARD SCREEN
 // ==========================================
 class DashboardScreen extends StatelessWidget {
-  final bool isPaidUser; 
+  final bool isPaidUser;
   const DashboardScreen({super.key, this.isPaidUser = false});
 
   @override
@@ -325,14 +343,20 @@ class DashboardScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.centerLeft,
                 child: IconButton(
-                  icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 28,
+                  ),
                   onPressed: () {
                     if (Navigator.canPop(context)) {
                       Navigator.pop(context);
                     } else {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const LandingScreen()),
+                        MaterialPageRoute(
+                          builder: (context) => const LandingScreen(),
+                        ),
                       );
                     }
                   },
@@ -341,7 +365,7 @@ class DashboardScreen extends StatelessWidget {
               const SizedBox(height: 10),
               const Center(child: AppLogo(size: 140)),
               const Spacer(),
-              
+
               Unified3DButton(
                 label: 'BOOKS',
                 onPressed: () {
@@ -354,7 +378,7 @@ class DashboardScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 24),
-              
+
               Unified3DButton(
                 label: 'old questions',
                 onPressed: () {
@@ -376,7 +400,7 @@ class DashboardScreen extends StatelessWidget {
 }
 
 // ==========================================
-// 4. BOOKS CATEGORY SCREEN 
+// 4. BOOKS CATEGORY SCREEN
 // ==========================================
 class BooksScreen extends StatelessWidget {
   final bool isPaidUser;
@@ -384,7 +408,7 @@ class BooksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final books = OfflineData.offlineBooks; 
+    final books = OfflineData.offlineBooks;
 
     return Scaffold(
       body: SafeArea(
@@ -392,9 +416,12 @@ class BooksScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 12),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Stack(
-                alignment: Alignment.center, 
+                alignment: Alignment.center,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -403,46 +430,67 @@ class BooksScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                              size: 28,
+                            ),
                             onPressed: () => Navigator.pop(context),
                           ),
                           const SizedBox(width: 8),
-                          const AppLogo(size: 90), 
+                          const AppLogo(size: 90),
                         ],
                       ),
                       TextButton(
-                        onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                        onPressed: () => Navigator.of(
+                          context,
+                        ).popUntil((route) => route.isFirst),
                         child: Text(
                           isPaidUser ? 'Logout' : 'Login',
-                          style: const TextStyle(color: Colors.black87, fontSize: 16),
+                          style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Text(
                       'BOOKS',
-                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 20),
-            
+
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                itemCount: books.length, 
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 8,
+                ),
+                itemCount: books.length,
                 itemBuilder: (context, index) {
                   final book = books[index];
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0), // အရိပ်လွတ်စေရန် အောက်ခြေ Padding တိုးထားသည်
+                    padding: const EdgeInsets.only(
+                      bottom: 20.0,
+                    ), // အရိပ်လွတ်စေရန် အောက်ခြေ Padding တိုးထားသည်
                     child: Unified3DButton(
                       label: book['subject_code']!,
                       onPressed: () {
@@ -469,7 +517,7 @@ class BooksScreen extends StatelessWidget {
 }
 
 // ==========================================
-// 5. OLD QUESTIONS YEAR SCREEN 
+// 5. OLD QUESTIONS YEAR SCREEN
 // ==========================================
 class YearsScreen extends StatelessWidget {
   final bool isPaidUser;
@@ -485,7 +533,10 @@ class YearsScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 12),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -496,7 +547,11 @@ class YearsScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                              size: 28,
+                            ),
                             onPressed: () => Navigator.pop(context),
                           ),
                           const SizedBox(width: 8),
@@ -504,16 +559,24 @@ class YearsScreen extends StatelessWidget {
                         ],
                       ),
                       TextButton(
-                        onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                        onPressed: () => Navigator.of(
+                          context,
+                        ).popUntil((route) => route.isFirst),
                         child: Text(
                           isPaidUser ? 'Logout' : 'Login',
-                          style: const TextStyle(color: Colors.black87, fontSize: 16),
+                          style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(12),
@@ -521,14 +584,18 @@ class YearsScreen extends StatelessWidget {
                     child: const Text(
                       'old questions',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 40),
-            
+
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -543,7 +610,7 @@ class YearsScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) => QuestionsSubjectScreen(
-                              year: years[index], 
+                              year: years[index],
                               isPaidUser: isPaidUser,
                             ),
                           ),
@@ -562,15 +629,25 @@ class YearsScreen extends StatelessWidget {
 }
 
 // ==========================================
-// 6. QUESTIONS SUBJECT SCREEN 
+// 6. QUESTIONS SUBJECT SCREEN
 // ==========================================
 class QuestionsSubjectScreen extends StatelessWidget {
-  final String year; 
+  final String year;
   final bool isPaidUser;
-  const QuestionsSubjectScreen({super.key, required this.year, this.isPaidUser = false});
+  const QuestionsSubjectScreen({
+    super.key,
+    required this.year,
+    this.isPaidUser = false,
+  });
 
   final List<String> subjects = const [
-    'myanmar', 'eng', 'math', 'chem', 'phy', 'bio', 'eco',
+    'myanmar',
+    'eng',
+    'math',
+    'chem',
+    'phy',
+    'bio',
+    'eco',
   ];
 
   @override
@@ -581,7 +658,10 @@ class QuestionsSubjectScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 12),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -592,7 +672,11 @@ class QuestionsSubjectScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                              size: 28,
+                            ),
                             onPressed: () => Navigator.pop(context),
                           ),
                           const SizedBox(width: 8),
@@ -600,26 +684,38 @@ class QuestionsSubjectScreen extends StatelessWidget {
                         ],
                       ),
                       TextButton(
-                        onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                        onPressed: () => Navigator.of(
+                          context,
+                        ).popUntil((route) => route.isFirst),
                         child: Text(
                           isPaidUser ? 'Logout' : 'Login',
-                          style: const TextStyle(color: Colors.black87, fontSize: 16),
+                          style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Column(
-                      mainAxisSize: MainAxisSize.min, 
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           year,
-                          style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         const Text(
                           'old questions',
@@ -632,10 +728,13 @@ class QuestionsSubjectScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            
+
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 8,
+                ),
                 itemCount: subjects.length,
                 itemBuilder: (context, index) {
                   return Padding(
@@ -665,17 +764,13 @@ class QuestionsSubjectScreen extends StatelessWidget {
 }
 
 // ==========================================
-// 7. FINAL CORE DETAIL VIEW 
+// 7. FINAL CORE DETAIL VIEW
 // ==========================================
 class DetailScreen extends StatelessWidget {
-  final String title; 
-  final String? assetPath; 
+  final String title;
+  final String? assetPath;
 
-  const DetailScreen({
-    super.key,
-    required this.title,
-    this.assetPath,
-  });
+  const DetailScreen({super.key, required this.title, this.assetPath});
 
   @override
   Widget build(BuildContext context) {
@@ -685,7 +780,10 @@ class DetailScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 12),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -696,7 +794,11 @@ class DetailScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                              size: 28,
+                            ),
                             onPressed: () => Navigator.pop(context),
                           ),
                           const SizedBox(width: 8),
@@ -704,7 +806,9 @@ class DetailScreen extends StatelessWidget {
                         ],
                       ),
                       TextButton(
-                        onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                        onPressed: () => Navigator.of(
+                          context,
+                        ).popUntil((route) => route.isFirst),
                         child: const Text(
                           'Login',
                           style: TextStyle(color: Colors.black87, fontSize: 16),
@@ -713,20 +817,27 @@ class DetailScreen extends StatelessWidget {
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
                       title.contains('-') ? title.split(' - ')[1] : title,
-                      style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-            
+
             Expanded(
               child: Center(
                 child: Column(
@@ -734,14 +845,21 @@ class DetailScreen extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w600, color: Colors.black87),
+                      style: const TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black87,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     if (assetPath != null) ...[
                       const SizedBox(height: 12),
                       Text(
                         'File: $assetPath',
-                        style: const TextStyle(fontSize: 14, color: Colors.black54),
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.black54,
+                        ),
                       ),
                     ],
                   ],

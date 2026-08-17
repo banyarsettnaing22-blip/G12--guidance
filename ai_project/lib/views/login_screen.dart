@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/supabase_service.dart';
 import 'books_screen.dart';
+import 'package:ai_project/views/userPage.dart'; // သင့် userPage file လမ်းကြောင်း
 
 // User Login ဝင်ရောက်ရန် Form ပါဝင်သော စာမျက်နှာ
 class LoginScreen extends StatefulWidget {
@@ -14,23 +15,34 @@ class _LoginScreenState extends State<LoginScreen> {
   // Input fields များမှ စာသားများကို ဖမ်းယူရန် Controller များ
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  
+
   // Supabase Database နှင့် ဆက်သွယ်ရန် Service Object
   final SupabaseService _supabaseService = SupabaseService();
-  
+
   // Login လုပ်နေစဉ် Loading ပြသရန် အခြေအနေပြ Variable
   bool _isLoading = false;
 
   // Login စစ်ဆေးခြင်း လုပ်ဆောင်ပေးသည့် Method
   void _handleLogin() async {
-    setState(() => _isLoading = true); // Loading စတင်ပြသခြင်း
-    
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
 
+    // --- အသစ်ထည့်ထားသော Logic ---
+    // Email နှင့် Password အလွတ်ဖြစ်နေပါက UserPage သို့ တိုက်ရိုက်သွားရန် (Shortcut)
+    if (email.isEmpty && password.isEmpty) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const UserPage()),
+      );
+      return; // အောက်က Supabase login အဆင့်များကို ဆက်မလုပ်တော့ဘဲ ရပ်လိုက်ပါမည်
+    }
+    // ----------------------------
+
+    setState(() => _isLoading = true); // Loading စတင်ပြသခြင်း
+
     // Supabase တွင် User အကောင့်နှင့် Paid Status ကို စစ်ဆေးခြင်း
     final isPaid = await _supabaseService.loginPaidUser(email, password);
-    
+
     setState(() => _isLoading = false); // Loading ပိတ်ခြင်း
 
     if (isPaid && mounted) {
@@ -74,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: const InputDecoration(labelText: 'Username / Email:'),
             ),
             const SizedBox(height: 16),
-            
+
             // လျှို့ဝှက်နံပါတ် ရိုက်ထည့်ရန် အကွက်
             TextField(
               controller: _passwordController,
@@ -82,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: const InputDecoration(labelText: 'Password:'),
             ),
             const SizedBox(height: 30),
-            
+
             // Login စတင် အလုပ်လုပ်မည့် ခလုတ်
             SizedBox(
               width: double.infinity,
@@ -94,7 +106,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 onPressed: _isLoading ? null : _handleLogin,
                 child: _isLoading
                     ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text('Login', style: TextStyle(color: Colors.white, fontSize: 16)),
+                    : const Text(
+                        'Login',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ),
               ),
             ),
           ],
