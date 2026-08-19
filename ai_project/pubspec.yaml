@@ -12,9 +12,8 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
+  appwrite: ^25.4.0
   # Supabase Flutter Package
-  supabase_flutter: ^2.8.0
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

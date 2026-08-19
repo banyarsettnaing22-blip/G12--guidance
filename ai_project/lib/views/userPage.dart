@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+// main.dart ထဲရှိ BooksScreen, YearsScreen နှင့် LandingScreen တို့ကို လှမ်းခေါ်ရန်
+import 'package:ai_project/main.dart'; 
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -13,6 +15,48 @@ class _HomeViewState extends State<HomeView> {
   final Color _primaryGreen = const Color(0xFF76C843);
   final Color _bgBlue = const Color(0xFF2EB5FA);
   final Color _cyanCard = const Color(0xFF67E8F9);
+
+  // Bottom Navigation Bar အလုပ်လုပ်စေရန်
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+    
+    // Profile (တတိယခလုတ်) ကို နှိပ်ပါက Logout ထွက်မည့် ဥပမာ
+    if (index == 2) {
+      _showLogoutDialog();
+    }
+  }
+
+  // Logout လုပ်ရန် သတိပေးမည့် Box
+  void _showLogoutDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Logout"),
+          content: const Text("Are you sure you want to log out?"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context), // Cancel
+              child: const Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () {
+                // Landing Screen သို့ ပြန်သွားပြီး ကျန်တဲ့ မှတ်တမ်းများကို ဖျက်မည်
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LandingScreen()),
+                  (route) => false,
+                );
+              },
+              child: const Text("Logout", style: TextStyle(color: Colors.red)),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +97,7 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                           Text(
-                            'ThetNaung',
+                            'Premium User', // နာမည်ကို လိုအပ်သလို ပြင်ဆင်နိုင်ပါသည်
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -109,32 +153,54 @@ class _HomeViewState extends State<HomeView> {
                       crossAxisSpacing: 14,
                       mainAxisSpacing: 14,
                       children: [
-                        _buildGridCard(icon: Icons.menu_book, label: 'BOOKS'),
+                        _buildGridCard(
+                          icon: Icons.menu_book, 
+                          label: 'BOOKS',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const BooksScreen(isPaidUser: true)),
+                            );
+                          }
+                        ),
                         _buildGridCard(
                           icon: Icons.quiz_outlined,
                           label: 'Old Questions',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const YearsScreen(isPaidUser: true)),
+                            );
+                          }
                         ),
                         _buildGridCard(
                           icon: Icons.ondemand_video,
                           label: 'videos',
+                          onTap: () {}, // နောက်မှ ထပ်ဖြည့်ရန်
                         ),
                         _buildGridCard(
                           icon: Icons.lightbulb_outline,
                           label: 'Quiz',
+                          onTap: () {}, // နောက်မှ ထပ်ဖြည့်ရန်
                         ),
                         _buildGridCard(
                           icon: Icons.psychology_outlined,
                           label: 'Ask AI',
+                          onTap: () {}, // နောက်မှ ထပ်ဖြည့်ရန်
                         ),
-                        _buildGridCard(icon: Icons.edit_note, label: 'Note'),
+                        _buildGridCard(
+                          icon: Icons.edit_note, 
+                          label: 'Note',
+                          onTap: () {}, // နောက်မှ ထပ်ဖြည့်ရန်
+                        ),
                       ],
                     ),
                     const SizedBox(height: 24),
 
                     // Wide Action Buttons
-                    _buildWideButton(title: 'အမှတ်ပေးစည်းမျဉ်း'),
+                    _buildWideButton(title: 'အမှတ်ပေးစည်းမျဉ်း', onTap: (){}),
                     const SizedBox(height: 16),
-                    _buildWideButton(title: 'Sample Questions'),
+                    _buildWideButton(title: 'Sample Questions', onTap: (){}),
                   ],
                 ),
               ),
@@ -154,7 +220,7 @@ class _HomeViewState extends State<HomeView> {
         ),
         child: BottomNavigationBar(
           currentIndex: _selectedIndex,
-          onTap: (index) => setState(() => _selectedIndex = index),
+          onTap: _onItemTapped, // ပြင်ဆင်ထားသော function ကို ခေါ်သုံးထားသည်
           backgroundColor: Colors.transparent,
           elevation: 0,
           selectedItemColor: Colors.white,
@@ -173,7 +239,7 @@ class _HomeViewState extends State<HomeView> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline),
               activeIcon: Icon(Icons.person),
-              label: 'Profile',
+              label: 'Profile', // ယခု ဤနေရာကို နှိပ်ပါက Logout Box ပေါ်လာပါမည်
             ),
           ],
         ),
@@ -181,7 +247,8 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  Widget _buildGridCard({required IconData icon, required String label}) {
+  // onTap Function အသစ် လက်ခံနိုင်ရန် ပြင်ဆင်ထားသည်
+  Widget _buildGridCard({required IconData icon, required String label, required VoidCallback onTap}) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -191,7 +258,7 @@ class _HomeViewState extends State<HomeView> {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
-          onTap: () {},
+          onTap: onTap, // အပြင်မှ လှမ်းပေးသော အလုပ်ကို လုပ်မည်
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -213,7 +280,8 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  Widget _buildWideButton({required String title}) {
+  // onTap Function အသစ် လက်ခံနိုင်ရန် ပြင်ဆင်ထားသည်
+  Widget _buildWideButton({required String title, required VoidCallback onTap}) {
     return Container(
       width: double.infinity,
       height: 56,
@@ -226,7 +294,7 @@ class _HomeViewState extends State<HomeView> {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(18),
-          onTap: () {},
+          onTap: onTap,
           child: Center(
             child: Text(
               title,

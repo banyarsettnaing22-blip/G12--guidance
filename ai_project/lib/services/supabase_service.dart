@@ -1,38 +1,31 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
-  final SupabaseClient supabase = Supabase.instance.client;
+  final supabase = Supabase.instance.client;
 
-  // လက်ရှိ User သည် Login ဝင်ထားခြင်း ရှိ/မရှိ စစ်ဆေးခြင်း
-  bool get isLoggedIn => supabase.auth.currentUser != null;
-
-  // Paid User Login ဝင်ခြင်းနှင့် Paid Status စစ်ဆေးခြင်း
-  Future<bool> loginPaidUser(String email, String password) async {
+  Future<bool> loginPaidUser(String loginId, String password) async {
     try {
-      // ၁။ Supabase Auth ဖြင့် Login စစ်ဆေးခြင်း
-      final AuthResponse res = await supabase.auth.signInWithPassword(
-        email: email,
-        password: password,
-      );
-
-      if (res.user == null) return false;
-
-      // ၂။ Profiles table ထဲတွင် Paid User စစ်စစ် ဟုတ်/မဟုတ် စစ်ဆေးခြင်း
-      final data = await supabase
+      final response = await supabase
           .from('profiles')
-          .select('is_paid')
-          .eq('email', email)
-          .single();
+          .select()
+          // "$loginId" များကို Double Quotes "" ဖြင့် အုပ်ပေးရပါမည် 
+          // (ဥပမာ- email တွင် @ ပါလာလျှင် Error မတက်စေရန်)
+          .or('name.eq."$loginId",email.eq."$loginId"')
+          .eq('password', password)
+          .maybeSingle();
 
-      return data['is_paid'] as bool? ?? false;
+      if (response != null) {
+        bool isPaid = response['is_paid'] ?? false;
+        if (isPaid) {
+          print('Login Success!');
+          return true; 
+        }
+      }
+      return false; 
     } catch (e) {
-      print("Login / Auth Error: $e");
+      // Error တက်ခဲ့လျှင် Terminal တွင် ပြပေးမည်
+      print('Supabase Login Error: $e'); 
       return false;
     }
-  }
-
-  // Logout ပြုလုပ်ခြင်း
-  Future<void> logoutUser() async {
-    await supabase.auth.signOut();
   }
 }
