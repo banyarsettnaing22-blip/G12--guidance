@@ -13,7 +13,9 @@ dependencies:
 
   cupertino_icons: ^1.0.8
   appwrite: ^25.4.0
-  # Supabase Flutter Package
+  google_generative_ai: ^0.4.7
+  http: ^1.2.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -22,7 +24,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # Asset ဖိုင်များ (logo1.png အပါအဝင် assets ဖိုဒါတစ်ခုလုံးကို အလိုအလျောက် ချိတ်ဆက်ပေးပါမည်)
+  # Assets ဖိုင်များ
   assets:
     - assets/
     # - assets/books/

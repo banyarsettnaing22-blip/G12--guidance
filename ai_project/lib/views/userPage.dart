@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // main.dart ထဲရှိ BooksScreen, YearsScreen နှင့် LandingScreen တို့ကို လှမ်းခေါ်ရန်
 import 'package:ai_project/main.dart'; 
+import 'package:ai_project/views/ask_ai_screen.dart'; // Ask AI မျက်နှာပြင်ကို ခေါ်ရန်
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -186,7 +187,13 @@ class _HomeViewState extends State<HomeView> {
                         _buildGridCard(
                           icon: Icons.psychology_outlined,
                           label: 'Ask AI',
-                          onTap: () {}, // နောက်မှ ထပ်ဖြည့်ရန်
+                          onTap: () {
+                            // ယခုခလုတ်ကို နှိပ်ပါက Ask AI စာမျက်နှာသို့ သွားမည်ဖြစ်သည်
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const AskAIScreen()),
+                            );
+                          },
                         ),
                         _buildGridCard(
                           icon: Icons.edit_note, 
