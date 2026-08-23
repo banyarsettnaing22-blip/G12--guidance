@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,6 +20,9 @@ class _AskAIScreenState extends State<AskAIScreen> {
   final List<ChatMessage> _messages = [];
   bool _isLoading = false;
 
+  // Paste your OpenAI API Key below (starts with sk-...)
+  static const String _openAiApiKey = '';
+
   Future<void> _sendMessage() async {
     final text = _controller.text.trim();
     if (text.isEmpty) return;
@@ -30,19 +34,49 @@ class _AskAIScreenState extends State<AskAIScreen> {
     _controller.clear();
 
     try {
-      final url = Uri.parse(
-        'https://text.pollinations.ai/${Uri.encodeComponent(text)}?system=You are a helpful Grade 12 tutor',
+      final url = Uri.parse('https://api.openai.com/v1/chat/completions');
+
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'Authorization': 'Bearer $_openAiApiKey',
+        },
+        body: jsonEncode({
+          'model': 'gpt-4o-mini',
+          'messages': [
+            {
+              'role': 'system',
+              'content': 'You are a helpful Grade 12 tutor.',
+            },
+            {
+              'role': 'user',
+              'content': text,
+            }
+          ],
+          'temperature': 0.7,
+        }),
       );
 
-      final response = await http.get(url);
-
       if (response.statusCode == 200) {
+        final data = jsonDecode(utf8.decode(response.bodyBytes));
+        final aiResponse =
+            data['choices']?[0]?['message']?['content'] ?? 'No response received.';
+
         setState(() {
-          _messages.add(ChatMessage(text: response.body, isUser: false));
+          _messages.add(ChatMessage(text: aiResponse.trim(), isUser: false));
         });
       } else {
+        final errorData = jsonDecode(utf8.decode(response.bodyBytes));
+        final errorMessage = errorData['error']?['message'] ?? response.body;
+
         setState(() {
-          _messages.add(ChatMessage(text: 'Error: ${response.statusCode}', isUser: false));
+          _messages.add(
+            ChatMessage(
+              text: 'Error ${response.statusCode}: $errorMessage',
+              isUser: false,
+            ),
+          );
         });
       }
     } catch (e) {
