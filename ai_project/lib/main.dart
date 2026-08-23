@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:ai_project/services/appwrite_service.dart'; // Appwrite ချိတ်ဆက်ရန် Service
-import 'data/offline_data.dart'; // Offline Data များခေါ်သုံးရန်
-import 'package:ai_project/views/userPage.dart'; // GitHub မှ ယူထားသော userPage.dart
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:ai_project/services/appwrite_service.dart';
+import 'data/offline_data.dart';
+import 'package:ai_project/views/userPage.dart';
 
 // ==========================================
-// 1. App စတင်အလုပ်လုပ်မည့် အဓိက Entry Point
+// 1. App Entry Point
 // ==========================================
 void main() async {
-  // Flutter framework ကို သေချာစွာ စတင်နိုင်ရန် ကြိုတင်ပြင်ဆင်ခြင်း
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
 // ==========================================
-// 2. App တစ်ခုလုံး၏ အခြေခံ အပြင်အဆင် (Theme)
+// 2. Theme & Base Config
 // ==========================================
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -22,22 +22,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Education App',
-      debugShowCheckedModeBanner: false, // ညာဘက်အပေါ်ထောင့်က Debug စာတန်းကို ဖျောက်ထားမည်
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: const Color(0xFF4A769E),
-        // App တစ်ခုလုံးရှိ စာမျက်နှာတိုင်းအတွက် နောက်ခံအရောင်ကို Cyan Blue သတ်မှတ်ခြင်း
         scaffoldBackgroundColor: const Color(0xFF1FC2D8),
       ),
-      home: const LandingScreen(), // ပထမဆုံး စတင်ပွင့်လာမည့် စာမျက်နှာ
+      home: const LandingScreen(),
     );
   }
 }
 
 // ==========================================
-// 3. App Logo Component (Logo ပုံလေး ဖော်ပြပေးမည့်အပိုင်း)
+// 3. App Logo Component
 // ==========================================
 class AppLogo extends StatelessWidget {
-  final double size; // Logo အရွယ်အစားကို လိုသလို ပြောင်းနိုင်ရန်
+  final double size;
   const AppLogo({super.key, this.size = 140});
 
   @override
@@ -47,7 +46,6 @@ class AppLogo extends StatelessWidget {
       width: size,
       height: size,
       fit: BoxFit.contain,
-      // အကယ်၍ ပုံရှာမတွေ့ခဲ့ရင် Error အစား အောက်ပါ Box လေးကို ပြပေးပါမည်
       errorBuilder: (context, error, stackTrace) {
         return Container(
           width: size,
@@ -69,43 +67,47 @@ class AppLogo extends StatelessWidget {
 }
 
 // ==========================================
-// 4. Unified 3D Button (နေရာတိုင်းမှာ သုံးမည့် 3D အရိပ်ပါသော ခလုတ်)
+// 4. Unified 3D Button
 // ==========================================
 class Unified3DButton extends StatelessWidget {
-  final String label; // ခလုတ်ပေါ်မှာ ပြမည့် စာသား
-  final VoidCallback onPressed; // နှိပ်လိုက်လျှင် လုပ်ဆောင်မည့် အလုပ်
-  final double? width; // ခလုတ် အကျယ် (မထည့်ပါက မျက်နှာပြင်အပြည့်ယူမည်)
+  final String label;
+  final VoidCallback onPressed;
+  final double? width;
+  final Color backgroundColor;
+  final Color textColor;
 
   const Unified3DButton({
     super.key,
     required this.label,
     required this.onPressed,
     this.width,
+    this.backgroundColor = const Color(0xFF87CE52),
+    this.textColor = Colors.black,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed, // ခလုတ်နှိပ်တာကို နားထောင်မည်
+      onTap: onPressed,
       child: Container(
         width: width ?? double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 14),
         decoration: BoxDecoration(
-          color: const Color(0xFF87CE52), // အစိမ်းရောင် နောက်ခံ
-          borderRadius: BorderRadius.circular(10), // ထောင့်ဝိုင်း
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(10),
           boxShadow: const [
             BoxShadow(
-              color: Color(0xFF1B3B36), // အမည်း/အစိမ်းရင့်ရောင် အရိပ် (Solid Shadow)
-              offset: Offset(4, 5), // အရိပ်ကို အောက်ဘက်နှင့် ညာဘက်သို့ အနည်းငယ် ရွှေ့ထားသည်
-              blurRadius: 0, // အရိပ်ကို မဝါးစေဘဲ ပြတ်သားစွာ ထားမည်
+              color: Color(0xFF1B3B36),
+              offset: Offset(4, 5),
+              blurRadius: 0,
             ),
           ],
         ),
         alignment: Alignment.center,
         child: Text(
           label,
-          style: const TextStyle(
-            color: Colors.black,
+          style: TextStyle(
+            color: textColor,
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
@@ -116,7 +118,7 @@ class Unified3DButton extends StatelessWidget {
 }
 
 // ==========================================
-// 5. LANDING SCREEN (App အစ ဝင်ဝင်ချင်း စာမျက်နှာ)
+// 5. LANDING SCREEN
 // ==========================================
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -130,15 +132,12 @@ class LandingScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const AppLogo(size: 220), // Logo ကြီးကြီးပြမည်
+                const AppLogo(size: 220),
                 const SizedBox(height: 70),
-
-                // Login ဝင်မည့် ခလုတ်
                 Unified3DButton(
                   width: 240,
                   label: 'login',
                   onPressed: () {
-                    // နှိပ်လိုက်ပါက LoginScreen သို့ သွားမည်
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -148,24 +147,20 @@ class LandingScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(height: 24),
-
-                // ဧည့်သည်အဖြစ် (Guest) ဝင်မည့် ခလုတ်
                 Unified3DButton(
                   width: 240,
                   label: 'Guest',
                   onPressed: () {
-                    // နှိပ်လိုက်ပါက Premium User 'မဟုတ်' သော အခြေအနေဖြင့် Dashboard သို့သွားမည်
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const DashboardScreen(isPaidUser: false),
+                        builder: (context) =>
+                            const DashboardScreen(isPaidUser: false),
                       ),
                     );
                   },
                 ),
                 const SizedBox(height: 24),
-
-                // စကားဝှက်မေ့သွားပါက နှိပ်ရန် (လက်ရှိတွင် အလုပ်မလုပ်သေးပါ)
                 GestureDetector(
                   onTap: () {},
                   child: const Text(
@@ -190,7 +185,7 @@ class LandingScreen extends StatelessWidget {
 }
 
 // ==========================================
-// 6. LOGIN INPUT SCREEN (Username နှင့် Password ရိုက်ထည့်ရန်)
+// 6. LOGIN SCREEN
 // ==========================================
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -200,13 +195,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // စာရိုက်ထည့်မည့် အကွက်များအတွက် Controller များ
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  
-  // ဤနေရာတွင် Appwrite Service ကို ခေါ်သုံးထားပါသည်
   final _appwriteService = AppwriteService();
-  bool _isLoading = false; // Loading လည်နေ/မနေ သတ်မှတ်ရန်
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -215,14 +207,10 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  // ==========================================
-  // Login ခလုတ်နှိပ်လိုက်သောအခါ အလုပ်လုပ်မည့် Function
-  // ==========================================
   void _handleLogin() async {
     final loginId = _emailController.text.trim();
     final password = _passwordController.text.trim();
 
-    // ၁။ စာသား လုံးဝ မရိုက်ထည့်ဘဲ Login နှိပ်ပါက တားဆီးမည် (Bypass မလုပ်တော့ပါ)
     if (loginId.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -230,35 +218,23 @@ class _LoginScreenState extends State<LoginScreen> {
           backgroundColor: Colors.orange,
         ),
       );
-      return; 
+      return;
     }
 
-    // ၂။ စာသားရိုက်ထည့်ထားပါက Appwrite Database သို့ လှမ်းစစ်ဆေးမည်
-    setState(() {
-      _isLoading = true;
-    });
+    setState(() => _isLoading = true);
 
     final isPaid = await _appwriteService.loginPaidUser(loginId, password);
 
-    // မျက်နှာပြင် ပိတ်သွားခြင်း ရှိ/မရှိ စစ်ဆေးပြီးမှ Loading ကို ရပ်တန့်မည်
     if (!mounted) return;
-    setState(() {
-      _isLoading = false;
-    });
+    setState(() => _isLoading = false);
 
-    // ၃။ Database မှ အဖြေမှန်ကန်ပါက (Premium User ဖြစ်ပါက) userPage သို့ သွားမည်
     if (isPaid) {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(
-          // GitHub မှ ယူထားသော userPage.dart မှ Class နာမည်
-          // (အကယ်၍ HomeView() ဖြစ်နေပါက အောက်တွင် ပြောင်းရေးပါ)
-          builder: (context) => HomeView(), 
-        ),
-        (route) => false, // အနောက်သို့ ပြန်ဆုတ်ခွင့်မရှိအောင် ယခင်စာမျက်နှာများကို ဖျက်ပစ်မည်
+        MaterialPageRoute(builder: (context) => HomeView()),
+        (route) => false,
       );
     } else {
-      // မှားယွင်းနေပါက အောက်ခြေတွင် အနီရောင်ဖြင့် စာတန်းပြပေးမည်
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Login failed! Please check your credentials.'),
@@ -277,19 +253,20 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               const SizedBox(height: 12),
-              // နောက်သို့ပြန်ဆုတ်မည့် မြှားခလုတ် (Back Button)
               Align(
                 alignment: Alignment.centerLeft,
                 child: IconButton(
-                  icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 28,
+                  ),
                   onPressed: () => Navigator.pop(context),
                 ),
               ),
               const SizedBox(height: 20),
               const AppLogo(size: 160),
               const SizedBox(height: 40),
-
-              // Username သို့မဟုတ် Email ရိုက်ထည့်ရန် အကွက်
               TextField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -306,11 +283,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-
-              // Password ရိုက်ထည့်ရန် အကွက်
               TextField(
                 controller: _passwordController,
-                obscureText: true, // စကားဝှက်များကို အမည်းစက်လေးများဖြင့် ဖုံးထားမည်
+                obscureText: true,
                 style: const TextStyle(color: Colors.black),
                 decoration: const InputDecoration(
                   labelText: 'Password:',
@@ -324,14 +299,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 60),
-
-              // Loading ဖြစ်နေပါက အဝိုင်းလည်ပြမည်၊ မဟုတ်ပါက Login ခလုတ်ပြမည်
               _isLoading
-                  ? const Center(child: CircularProgressIndicator(color: Colors.white))
-                  : Unified3DButton(
-                      label: 'Login',
-                      onPressed: _handleLogin,
-                    ),
+                  ? const Center(
+                      child: CircularProgressIndicator(color: Colors.white),
+                    )
+                  : Unified3DButton(label: 'Login', onPressed: _handleLogin),
             ],
           ),
         ),
@@ -341,10 +313,10 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 // ==========================================
-// 7. MAIN DASHBOARD SCREEN (ပင်မစာမျက်နှာ - ဧည့်သည်အဖြစ်ဝင်သူများအတွက်)
+// 7. DASHBOARD SCREEN (With Settings/Profile Option)
 // ==========================================
 class DashboardScreen extends StatelessWidget {
-  final bool isPaidUser; // Premium (Paid) သုံးစွဲသူ ဟုတ်/မဟုတ် စစ်ဆေးရန်
+  final bool isPaidUser;
   const DashboardScreen({super.key, this.isPaidUser = false});
 
   @override
@@ -356,28 +328,49 @@ class DashboardScreen extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 12),
-              // Logout လုပ်မည့်ခလုတ် (နောက်သို့ပြန်ဆုတ်မည်)
-              Align(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                  icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
-                  onPressed: () {
-                    if (Navigator.canPop(context)) {
-                      Navigator.pop(context);
-                    } else {
-                      Navigator.pushReplacement(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                    onPressed: () {
+                      if (Navigator.canPop(context)) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LandingScreen(),
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(
+                      Icons.settings,
+                      color: Colors.white,
+                      size: 28,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const LandingScreen()),
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              SettingsScreen(isPaidUser: isPaidUser),
+                        ),
                       );
-                    }
-                  },
-                ),
+                    },
+                  ),
+                ],
               ),
               const SizedBox(height: 10),
               const Center(child: AppLogo(size: 140)),
-              const Spacer(), // အပေါ်နှင့် အောက်ကြား နေရာအလွတ် ဖန်တီးပေးမည်
-
-              // စာအုပ်များ (BOOKS) ကဏ္ဍသို့ သွားရန် ခလုတ်
+              const Spacer(),
               Unified3DButton(
                 label: 'BOOKS',
                 onPressed: () {
@@ -390,8 +383,6 @@ class DashboardScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 24),
-
-              // မေးခွန်းဟောင်းများ (Old Questions) ကဏ္ဍသို့ သွားရန် ခလုတ်
               Unified3DButton(
                 label: 'old questions',
                 onPressed: () {
@@ -403,7 +394,22 @@ class DashboardScreen extends StatelessWidget {
                   );
                 },
               ),
-              const Spacer(flex: 2), // အောက်ခြေဘက်တွင် နေရာပိုချန်ထားမည်
+              const SizedBox(height: 24),
+              Unified3DButton(
+                label: 'SETTINGS & PROFILE',
+                backgroundColor: const Color(0xFF4A769E),
+                textColor: Colors.white,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          SettingsScreen(isPaidUser: isPaidUser),
+                    ),
+                  );
+                },
+              ),
+              const Spacer(flex: 2),
             ],
           ),
         ),
@@ -413,7 +419,210 @@ class DashboardScreen extends StatelessWidget {
 }
 
 // ==========================================
-// 8. BOOKS CATEGORY SCREEN (စာအုပ်များ စာရင်း)
+// 8. SETTINGS & PROFILE SCREEN
+// ==========================================
+class SettingsScreen extends StatefulWidget {
+  final bool isPaidUser;
+  const SettingsScreen({super.key, this.isPaidUser = false});
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool _offlineSync = true;
+  bool _notifications = true;
+
+  @override
+  Widget build(BuildContext context) {
+    final primary = Theme.of(context).primaryColor;
+
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            const SizedBox(height: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                          size: 28,
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                      const SizedBox(width: 8),
+                      const AppLogo(size: 70),
+                    ],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 28,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: primary,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Text(
+                      'SETTINGS',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 8,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: ListView(
+                  children: [
+                    // Profile Header Card
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 28,
+                          backgroundColor: primary,
+                          child: const Icon(
+                            Icons.person,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.isPaidUser ? 'Paid Member' : 'Guest User',
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              widget.isPaidUser
+                                  ? 'Full Access'
+                                  : 'Limited Access',
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const Divider(height: 32),
+
+                    // App Preferences
+                    const Text(
+                      'Preferences',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    SwitchListTile(
+                      title: const Text('Offline Mode Sync'),
+                      subtitle: const Text('Keep local book caches ready'),
+                      value: _offlineSync,
+                      activeColor: primary,
+                      onChanged: (val) => setState(() => _offlineSync = val),
+                    ),
+                    SwitchListTile(
+                      title: const Text('Push Notifications'),
+                      subtitle: const Text('Updates on new questions'),
+                      value: _notifications,
+                      activeColor: primary,
+                      onChanged: (val) => setState(() => _notifications = val),
+                    ),
+                    const Divider(height: 32),
+
+                    // Cache & Storage
+                    const Text(
+                      'Storage',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    ListTile(
+                      leading: const Icon(Icons.delete_outline),
+                      title: const Text('Clear Cached PDFs'),
+                      subtitle: const Text(
+                        'Delete temporary offline documents',
+                      ),
+                      onTap: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Local PDF cache cleared.'),
+                          ),
+                        );
+                      },
+                    ),
+                    const Divider(height: 32),
+
+                    // Logout / Return to Landing
+                    ListTile(
+                      leading: const Icon(Icons.logout, color: Colors.red),
+                      title: Text(
+                        widget.isPaidUser
+                            ? 'Log Out'
+                            : 'Exit to Landing Screen',
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => const LandingScreen(),
+                          ),
+                          (route) => false,
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ==========================================
+// 9. BOOKS CATEGORY SCREEN
 // ==========================================
 class BooksScreen extends StatelessWidget {
   final bool isPaidUser;
@@ -421,16 +630,18 @@ class BooksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final books = OfflineData.offlineBooks; // offline_data.dart မှ စာအုပ်စာရင်းကို ဆွဲယူမည်
+    final books = OfflineData.offlineBooks;
 
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
             const SizedBox(height: 12),
-            // အပေါ်ဆုံးရှိ Header (Back Button, Logo, Title, Login/Logout Button)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -441,51 +652,66 @@ class BooksScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                              size: 28,
+                            ),
                             onPressed: () => Navigator.pop(context),
                           ),
                           const SizedBox(width: 8),
                           const AppLogo(size: 90),
                         ],
                       ),
-                      // ပင်မ Landing Screen သို့ တိုက်ရိုက်ပြန်သွားမည့် ခလုတ်
                       TextButton(
-                        onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                        onPressed: () => Navigator.of(
+                          context,
+                        ).popUntil((route) => route.isFirst),
                         child: Text(
                           isPaidUser ? 'Logout' : 'Login',
-                          style: const TextStyle(color: Colors.black87, fontSize: 16),
+                          style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  // ခေါင်းစဉ် "BOOKS" 
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Text(
                       'BOOKS',
-                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 20),
-
-            // ဘာသာရပ် စာအုပ်များစာရင်းကို List ဖြင့် ဖော်ပြခြင်း
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 8,
+                ),
                 itemCount: books.length,
                 itemBuilder: (context, index) {
                   final book = books[index];
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0), // ခလုတ်တစ်ခုနှင့် တစ်ခုကြား အကွာအဝေး
+                    padding: const EdgeInsets.only(bottom: 20.0),
                     child: Unified3DButton(
-                      label: book['subject_code']!, // ဥပမာ - Myanmar, English စသည်ဖြင့် ပြမည်
+                      label: book['subject_code']!,
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -510,13 +736,13 @@ class BooksScreen extends StatelessWidget {
 }
 
 // ==========================================
-// 9. OLD QUESTIONS YEAR SCREEN (ပညာသင်နှစ် ရွေးချယ်ရန်)
+// 10. OLD QUESTIONS YEAR SCREEN
 // ==========================================
 class YearsScreen extends StatelessWidget {
   final bool isPaidUser;
   const YearsScreen({super.key, this.isPaidUser = false});
 
-  final List<String> years = const ['2023-24', '2024-25', '2025-26']; // ရွေးချယ်နိုင်သော နှစ်များ
+  final List<String> years = const ['2023-24', '2024-25', '2025-26'];
 
   @override
   Widget build(BuildContext context) {
@@ -525,9 +751,11 @@ class YearsScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 12),
-            // Header အပိုင်း
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -538,7 +766,11 @@ class YearsScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                              size: 28,
+                            ),
                             onPressed: () => Navigator.pop(context),
                           ),
                           const SizedBox(width: 8),
@@ -546,16 +778,24 @@ class YearsScreen extends StatelessWidget {
                         ],
                       ),
                       TextButton(
-                        onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                        onPressed: () => Navigator.of(
+                          context,
+                        ).popUntil((route) => route.isFirst),
                         child: Text(
                           isPaidUser ? 'Logout' : 'Login',
-                          style: const TextStyle(color: Colors.black87, fontSize: 16),
+                          style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(12),
@@ -563,15 +803,17 @@ class YearsScreen extends StatelessWidget {
                     child: const Text(
                       'old questions',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 40),
-
-            // ပညာသင်နှစ် ခလုတ်များကို စီစဉ်ပြသခြင်း
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -582,7 +824,6 @@ class YearsScreen extends StatelessWidget {
                     child: Unified3DButton(
                       label: years[index],
                       onPressed: () {
-                        // နှစ်တစ်ခုကို ရွေးလိုက်ပါက ထိုနှစ်အတွက် ဘာသာရပ်ရွေးချယ်မည့် မျက်နှာပြင်သို့ သွားမည်
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -606,15 +847,25 @@ class YearsScreen extends StatelessWidget {
 }
 
 // ==========================================
-// 10. QUESTIONS SUBJECT SCREEN (မေးခွန်းဟောင်း ဘာသာရပ် ရွေးချယ်ရန်)
+// 11. QUESTIONS SUBJECT SCREEN
 // ==========================================
 class QuestionsSubjectScreen extends StatelessWidget {
-  final String year; // ရွေးချယ်ထားသော ပညာသင်နှစ်
+  final String year;
   final bool isPaidUser;
-  const QuestionsSubjectScreen({super.key, required this.year, this.isPaidUser = false});
+  const QuestionsSubjectScreen({
+    super.key,
+    required this.year,
+    this.isPaidUser = false,
+  });
 
   final List<String> subjects = const [
-    'myanmar', 'eng', 'math', 'chem', 'phy', 'bio', 'eco',
+    'myanmar',
+    'eng',
+    'math',
+    'chem',
+    'phy',
+    'bio',
+    'eco',
   ];
 
   @override
@@ -624,9 +875,11 @@ class QuestionsSubjectScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 12),
-            // Header အပိုင်း (ရွေးချယ်ထားသော ပညာသင်နှစ်ကို ခေါင်းစဉ်တွင် ပြပေးထားမည်)
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -637,7 +890,11 @@ class QuestionsSubjectScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                              size: 28,
+                            ),
                             onPressed: () => Navigator.pop(context),
                           ),
                           const SizedBox(width: 8),
@@ -645,16 +902,24 @@ class QuestionsSubjectScreen extends StatelessWidget {
                         ],
                       ),
                       TextButton(
-                        onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                        onPressed: () => Navigator.of(
+                          context,
+                        ).popUntil((route) => route.isFirst),
                         child: Text(
                           isPaidUser ? 'Logout' : 'Login',
-                          style: const TextStyle(color: Colors.black87, fontSize: 16),
+                          style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(20),
@@ -663,8 +928,12 @@ class QuestionsSubjectScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          year, // ယခင်မျက်နှာပြင်မှ ရွေးချယ်လာသော နှစ် (ဥပမာ: 2023-24)
-                          style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                          year,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         const Text(
                           'old questions',
@@ -677,11 +946,12 @@ class QuestionsSubjectScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-
-            // ဘာသာရပ်ခလုတ်များ ပြသခြင်း
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 8,
+                ),
                 itemCount: subjects.length,
                 itemBuilder: (context, index) {
                   return Padding(
@@ -689,12 +959,12 @@ class QuestionsSubjectScreen extends StatelessWidget {
                     child: Unified3DButton(
                       label: subjects[index],
                       onPressed: () {
-                        // နောက်ဆုံး ဖတ်ရှုရမည့် Detail Screen သို့ သွားမည်
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => DetailScreen(
                               title: '$year - ${subjects[index]}',
+                              assetPath: 'assets/books/${subjects[index]}.pdf',
                             ),
                           ),
                         );
@@ -712,17 +982,13 @@ class QuestionsSubjectScreen extends StatelessWidget {
 }
 
 // ==========================================
-// 11. FINAL CORE DETAIL VIEW (စာအုပ် သို့မဟုတ် မေးခွန်း အသေးစိတ် ပြသမည့် မျက်နှာပြင်)
+// 12. PDF DETAIL SCREEN
 // ==========================================
 class DetailScreen extends StatelessWidget {
-  final String title; // ခေါင်းစဉ် (ဘာသာရပ်အမည်)
-  final String? assetPath; // PDF လမ်းကြောင်း
+  final String title;
+  final String? assetPath;
 
-  const DetailScreen({
-    super.key,
-    required this.title,
-    this.assetPath,
-  });
+  const DetailScreen({super.key, required this.title, this.assetPath});
 
   @override
   Widget build(BuildContext context) {
@@ -731,9 +997,11 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 12),
-            // Header အပိုင်း
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -744,58 +1012,80 @@ class DetailScreen extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(
-                            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+                            icon: const Icon(
+                              Icons.arrow_back,
+                              color: Colors.white,
+                              size: 28,
+                            ),
                             onPressed: () => Navigator.pop(context),
                           ),
                           const SizedBox(width: 8),
-                          const AppLogo(size: 90),
+                          const AppLogo(size: 60),
                         ],
                       ),
                       TextButton(
-                        onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
+                        onPressed: () => Navigator.of(
+                          context,
+                        ).popUntil((route) => route.isFirst),
                         child: const Text(
-                          'Login', // ယခုစာမျက်နှာကို ရောက်နေပါက Guest သို့မဟုတ် User အားလုံး Login ပြန်ဝင်ရန်
+                          'Login',
                           style: TextStyle(color: Colors.black87, fontSize: 16),
                         ),
                       ),
                     ],
                   ),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 12,
+                    ),
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: Text(
-                      // '-' ပါလာပါက ဖြတ်ပြီး ဒုတိယပိုင်း (ဘာသာရပ်အမည်) ကိုသာ ပြမည်
                       title.contains('-') ? title.split(' - ')[1] : title,
-                      style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-
-            // အလယ်တွင် စာသားပြသခြင်း (ယခု နေရာတွင် PDF View ကို အစားထိုးနိုင်ပါသည်)
+            const SizedBox(height: 10),
             Expanded(
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w600, color: Colors.black87),
-                      textAlign: TextAlign.center,
+              child: Container(
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 8.0,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 6,
+                      offset: Offset(0, 3),
                     ),
-                    if (assetPath != null) ...[
-                      const SizedBox(height: 12),
-                      Text(
-                        'File: $assetPath',
-                        style: const TextStyle(fontSize: 14, color: Colors.black54),
-                      ),
-                    ],
                   ],
                 ),
+                clipBehavior: Clip.antiAlias,
+                child: (assetPath != null && assetPath!.isNotEmpty)
+                    ? SfPdfViewer.asset(
+                        assetPath!,
+                        canShowScrollHead: true,
+                        canShowScrollStatus: true,
+                      )
+                    : const Center(
+                        child: Text(
+                          'PDF File Not Found!',
+                          style: TextStyle(fontSize: 16, color: Colors.black54),
+                        ),
+                      ),
               ),
             ),
           ],

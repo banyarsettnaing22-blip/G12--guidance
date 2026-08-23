@@ -3,10 +3,10 @@ import 'package:flutter/foundation.dart'; // kIsWeb အသုံးပြုရ�
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart'; // Local Storage အတွက်
 // main.dart ထဲရှိ BooksScreen, YearsScreen နှင့် LandingScreen တို့ကို လှမ်းခေါ်ရန်
-import 'package:ai_project/main.dart'; 
+import 'package:ai_project/main.dart';
 import 'package:ai_project/views/ask_ai_screen.dart'; // Ask AI မျက်နှာပြင်ကို ခေါ်ရန်
 import 'note_screen.dart'; // ဖိုင်လမ်းကြောင်း မှန်ကန်အောင် ထည့်ပါ
-import 'profile_settings_screen.dart'; // Profile Settings ကို လှမ်းခေါ်ရန်
+import 'profile_settings_screen.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -46,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
         context,
         MaterialPageRoute(builder: (context) => const ProfileSettingsScreen()),
       );
-      _loadProfileImage(); 
+      _loadProfileImage();
       return; // အောက်ရှိ _selectedIndex ပြောင်းလဲခြင်းကို မလုပ်ဘဲ ရပ်လိုက်မည်
     }
 
@@ -78,7 +78,8 @@ class _HomeViewState extends State<HomeView> {
                     children: [
                       // --- Profile Image နေရာကို ပြင်ဆင်ထားသည် ---
                       Container(
-                        width: 56, // CircleAvatar(radius: 28) နှင့် အရွယ်အစားတူညီသည်
+                        width:
+                            56, // CircleAvatar(radius: 28) နှင့် အရွယ်အစားတူညီသည်
                         height: 56,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
@@ -87,10 +88,20 @@ class _HomeViewState extends State<HomeView> {
                         child: _imagePath != null
                             ? ClipOval(
                                 child: kIsWeb
-                                    ? Image.network(_imagePath!, fit: BoxFit.cover)
-                                    : Image.file(File(_imagePath!), fit: BoxFit.cover),
+                                    ? Image.network(
+                                        _imagePath!,
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Image.file(
+                                        File(_imagePath!),
+                                        fit: BoxFit.cover,
+                                      ),
                               )
-                            : const Icon(Icons.person, size: 36, color: Colors.grey),
+                            : const Icon(
+                                Icons.person,
+                                size: 36,
+                                color: Colors.grey,
+                              ),
                       ),
                       const SizedBox(width: 14),
                       Column(
@@ -162,14 +173,17 @@ class _HomeViewState extends State<HomeView> {
                       mainAxisSpacing: 14,
                       children: [
                         _buildGridCard(
-                          icon: Icons.menu_book, 
+                          icon: Icons.menu_book,
                           label: 'BOOKS',
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const BooksScreen(isPaidUser: true)),
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const BooksScreen(isPaidUser: true),
+                              ),
                             );
-                          }
+                          },
                         ),
                         _buildGridCard(
                           icon: Icons.quiz_outlined,
@@ -177,9 +191,12 @@ class _HomeViewState extends State<HomeView> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const YearsScreen(isPaidUser: true)),
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const YearsScreen(isPaidUser: true),
+                              ),
                             );
-                          }
+                          },
                         ),
                         _buildGridCard(
                           icon: Icons.ondemand_video,
@@ -198,18 +215,22 @@ class _HomeViewState extends State<HomeView> {
                             // ယခုခလုတ်ကို နှိပ်ပါက Ask AI စာမျက်နှာသို့ သွားမည်ဖြစ်သည်
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const AskAIScreen()),
+                              MaterialPageRoute(
+                                builder: (context) => const AskAIScreen(),
+                              ),
                             );
                           },
                         ),
                         _buildGridCard(
-                          icon: Icons.edit_note, 
+                          icon: Icons.edit_note,
                           label: 'Note',
                           onTap: () {
                             // Note ခလုတ်ကို နှိပ်ပါက Note စာမျက်နှာသို့ သွားမည်
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const NoteScreen()),
+                              MaterialPageRoute(
+                                builder: (context) => const NoteScreen(),
+                              ),
                             );
                           },
                         ),
@@ -218,9 +239,9 @@ class _HomeViewState extends State<HomeView> {
                     const SizedBox(height: 24),
 
                     // Wide Action Buttons
-                    _buildWideButton(title: 'အမှတ်ပေးစည်းမျဉ်း', onTap: (){}),
+                    _buildWideButton(title: 'အမှတ်ပေးစည်းမျဉ်း', onTap: () {}),
                     const SizedBox(height: 16),
-                    _buildWideButton(title: 'Sample Questions', onTap: (){}),
+                    _buildWideButton(title: 'Sample Questions', onTap: () {}),
                   ],
                 ),
               ),
@@ -240,7 +261,7 @@ class _HomeViewState extends State<HomeView> {
         ),
         child: BottomNavigationBar(
           currentIndex: _selectedIndex,
-          onTap: _onItemTapped, 
+          onTap: _onItemTapped,
           backgroundColor: Colors.transparent,
           elevation: 0,
           selectedItemColor: Colors.white,
@@ -259,7 +280,8 @@ class _HomeViewState extends State<HomeView> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline),
               activeIcon: Icon(Icons.person),
-              label: 'Profile', // ယခု ဤနေရာကို နှိပ်ပါက Settings စာမျက်နှာကို ခေါ်မည်
+              label:
+                  'Profile', // ယခု ဤနေရာကို နှိပ်ပါက Settings စာမျက်နှာကို ခေါ်မည်
             ),
           ],
         ),
@@ -268,7 +290,11 @@ class _HomeViewState extends State<HomeView> {
   }
 
   // Grid Card တည်ဆောက်ရန်
-  Widget _buildGridCard({required IconData icon, required String label, required VoidCallback onTap}) {
+  Widget _buildGridCard({
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+  }) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -278,7 +304,7 @@ class _HomeViewState extends State<HomeView> {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(16),
-          onTap: onTap, 
+          onTap: onTap,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -301,7 +327,10 @@ class _HomeViewState extends State<HomeView> {
   }
 
   // Wide Button တည်ဆောက်ရန်
-  Widget _buildWideButton({required String title, required VoidCallback onTap}) {
+  Widget _buildWideButton({
+    required String title,
+    required VoidCallback onTap,
+  }) {
     return Container(
       width: double.infinity,
       height: 56,

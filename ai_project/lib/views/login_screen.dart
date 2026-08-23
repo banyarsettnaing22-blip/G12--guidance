@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (email.isEmpty && password.isEmpty) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const UserPage()),
+        MaterialPageRoute(builder: (context) => const HomeView()),
       );
       return; // အောက်က Supabase login အဆင့်များကို ဆက်မလုပ်တော့ဘဲ ရပ်လိုက်ပါမည်
     }
