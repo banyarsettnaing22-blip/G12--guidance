@@ -5,8 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart'; // Local Storage �
 // main.dart ထဲရှိ BooksScreen, YearsScreen နှင့် LandingScreen တို့ကို လှမ်းခေါ်ရန်
 import 'package:ai_project/main.dart';
 import 'package:ai_project/views/ask_ai_screen.dart'; // Ask AI မျက်နှာပြင်ကို ခေါ်ရန်
-import 'note_screen.dart'; // ဖိုင်လမ်းကြောင်း မှန်ကန်အောင် ထည့်ပါ
+import 'note_screen.dart'; 
 import 'profile_settings_screen.dart';
+import 'quiz_screen.dart'; // Quiz Screen ကို ချိတ်ဆက်အသုံးပြုရန်
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -17,7 +18,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int _selectedIndex = 0;
-  String? _imagePath; // Profile ပုံအတွက် Variable အသစ်
+  String? _imagePath; // Profile ပုံအတွက် Variable
 
   final Color _primaryGreen = const Color(0xFF76C843);
   final Color _bgBlue = const Color(0xFF2EB5FA);
@@ -39,15 +40,13 @@ class _HomeViewState extends State<HomeView> {
 
   // Bottom Navigation Bar အလုပ်လုပ်စေရန်
   void _onItemTapped(int index) async {
-    // Profile (တတိယခလုတ် - Index 2) ကို နှိပ်ပါက Settings Page သို့ သွားမည်
     if (index == 2) {
-      // Navigator ကို await ဖြင့်စောင့်ပြီး ပြန်ထွက်လာပါက ပုံကို အသစ်ပြန်ခေါ်မည် (Refresh)
       await Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const ProfileSettingsScreen()),
       );
       _loadProfileImage();
-      return; // အောက်ရှိ _selectedIndex ပြောင်းလဲခြင်းကို မလုပ်ဘဲ ရပ်လိုက်မည်
+      return;
     }
 
     setState(() {
@@ -76,10 +75,8 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   Row(
                     children: [
-                      // --- Profile Image နေရာကို ပြင်ဆင်ထားသည် ---
                       Container(
-                        width:
-                            56, // CircleAvatar(radius: 28) နှင့် အရွယ်အစားတူညီသည်
+                        width: 56,
                         height: 56,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
@@ -116,7 +113,7 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                           Text(
-                            'Premium User', // နာမည်ကို လိုအပ်သလို ပြင်ဆင်နိုင်ပါသည်
+                            'Premium User',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -201,18 +198,25 @@ class _HomeViewState extends State<HomeView> {
                         _buildGridCard(
                           icon: Icons.ondemand_video,
                           label: 'videos',
-                          onTap: () {}, // နောက်မှ ထပ်ဖြည့်ရန်
+                          onTap: () {},
                         ),
+                        // --- Quiz Card နေရာတွင် QuizScreen သို့ လမ်းကြောင်းချိတ်ဆက်ထားသည် ---
                         _buildGridCard(
                           icon: Icons.lightbulb_outline,
                           label: 'Quiz',
-                          onTap: () {}, // နောက်မှ ထပ်ဖြည့်ရန်
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const QuizScreen(),
+                              ),
+                            );
+                          },
                         ),
                         _buildGridCard(
                           icon: Icons.psychology_outlined,
                           label: 'Ask AI',
                           onTap: () {
-                            // ယခုခလုတ်ကို နှိပ်ပါက Ask AI စာမျက်နှာသို့ သွားမည်ဖြစ်သည်
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -225,7 +229,6 @@ class _HomeViewState extends State<HomeView> {
                           icon: Icons.edit_note,
                           label: 'Note',
                           onTap: () {
-                            // Note ခလုတ်ကို နှိပ်ပါက Note စာမျက်နှာသို့ သွားမည်
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -280,8 +283,7 @@ class _HomeViewState extends State<HomeView> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person_outline),
               activeIcon: Icon(Icons.person),
-              label:
-                  'Profile', // ယခု ဤနေရာကို နှိပ်ပါက Settings စာမျက်နှာကို ခေါ်မည်
+              label: 'Profile',
             ),
           ],
         ),
@@ -289,7 +291,7 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  // Grid Card တည်ဆောက်ရန်
+  // Grid Card တည်ဆောက်ရန် Helper
   Widget _buildGridCard({
     required IconData icon,
     required String label,
@@ -326,7 +328,7 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 
-  // Wide Button တည်ဆောက်ရန်
+  // Wide Button တည်ဆောက်ရန် Helper
   Widget _buildWideButton({
     required String title,
     required VoidCallback onTap,

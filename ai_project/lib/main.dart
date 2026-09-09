@@ -1,14 +1,24 @@
+import 'dart:async';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart' as http;
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+
 import 'package:ai_project/services/appwrite_service.dart';
-import 'data/offline_data.dart';
 import 'package:ai_project/views/userPage.dart';
+import 'data/offline_data.dart';
 
 // ==========================================
 // 1. App Entry Point
 // ==========================================
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  // Flutter Web တွင် static asset အဖြစ် ချောမွေ့စွာ ဖတ်ယူနိုင်ရန် assets/env ကို သုံးပါသည်
+  await dotenv.load(fileName: "assets/env");
+  
   runApp(const MyApp());
 }
 
@@ -313,7 +323,7 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 // ==========================================
-// 7. DASHBOARD SCREEN (With Settings/Profile Option)
+// 7. DASHBOARD SCREEN
 // ==========================================
 class DashboardScreen extends StatelessWidget {
   final bool isPaidUser;
@@ -503,7 +513,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 child: ListView(
                   children: [
-                    // Profile Header Card
                     Row(
                       children: [
                         CircleAvatar(
@@ -540,8 +549,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ],
                     ),
                     const Divider(height: 32),
-
-                    // App Preferences
                     const Text(
                       'Preferences',
                       style: TextStyle(
@@ -564,8 +571,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       onChanged: (val) => setState(() => _notifications = val),
                     ),
                     const Divider(height: 32),
-
-                    // Cache & Storage
                     const Text(
                       'Storage',
                       style: TextStyle(
@@ -576,9 +581,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ListTile(
                       leading: const Icon(Icons.delete_outline),
                       title: const Text('Clear Cached PDFs'),
-                      subtitle: const Text(
-                        'Delete temporary offline documents',
-                      ),
+                      subtitle: const Text('Delete temporary offline documents'),
                       onTap: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
@@ -588,14 +591,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       },
                     ),
                     const Divider(height: 32),
-
-                    // Logout / Return to Landing
                     ListTile(
                       leading: const Icon(Icons.logout, color: Colors.red),
                       title: Text(
-                        widget.isPaidUser
-                            ? 'Log Out'
-                            : 'Exit to Landing Screen',
+                        widget.isPaidUser ? 'Log Out' : 'Exit to Landing Screen',
                         style: const TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.w600,
@@ -708,10 +707,14 @@ class BooksScreen extends StatelessWidget {
                 itemCount: books.length,
                 itemBuilder: (context, index) {
                   final book = books[index];
+                  final bool isOffline = book['is_offline'] == 'true' || 
+                                         (book['asset_path'] != null && book['asset_path']!.isNotEmpty);
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: Unified3DButton(
-                      label: book['subject_code']!,
+                      label: isOffline ? "${book['subject_code']!} (Offline)" : "${book['subject_code']!} ☁️",
+                      backgroundColor: isOffline ? const Color(0xFF87CE52) : const Color(0xFFFF5A5A),
+                      textColor: isOffline ? Colors.black : Colors.white,
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -719,6 +722,7 @@ class BooksScreen extends StatelessWidget {
                             builder: (context) => DetailScreen(
                               title: book['display_name']!,
                               assetPath: book['asset_path'],
+                              fileId: book['file_id'], 
                             ),
                           ),
                         );
@@ -982,113 +986,179 @@ class QuestionsSubjectScreen extends StatelessWidget {
 }
 
 // ==========================================
-// 12. PDF DETAIL SCREEN
+// 12. PDF DETAIL SCREEN (Hybrid: Local & Cloud)
 // ==========================================
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
   final String title;
   final String? assetPath;
+  final String? fileId;
 
-  const DetailScreen({super.key, required this.title, this.assetPath});
+  const DetailScreen({
+    super.key,
+    required this.title,
+    this.assetPath,
+    this.fileId,
+  });
+
+  @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  static const String endpoint = 'https://cloud.appwrite.io/v1';
+  static const String projectId = '6a85ef5f003d10eb304d';
+  static const String bucketId = '6a8afd05000ffb3c89a5';
+
+  Uint8List? _cloudPdfBytes;
+  bool _isLoading = false;
+  String? _errorMessage;
+  double _downloadProgress = 0.0;
+  
+  StreamSubscription? _downloadSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    final hasAsset = widget.assetPath != null && widget.assetPath!.isNotEmpty;
+    final hasFileId = widget.fileId != null && widget.fileId!.isNotEmpty;
+
+    if (!hasAsset && hasFileId) {
+      _fetchCloudPdf();
+    }
+  }
+
+  @override
+  void dispose() {
+    _downloadSubscription?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _fetchCloudPdf() async {
+    if (!mounted) return;
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+      _downloadProgress = 0.0;
+    });
+
+    final url = '$endpoint/storage/buckets/$bucketId/files/${widget.fileId}/view?project=$projectId';
+
+    try {
+      final client = http.Client();
+      final request = http.Request('GET', Uri.parse(url));
+      final response = await client.send(request);
+
+      if (response.statusCode == 200) {
+        final contentLength = response.contentLength ?? 0;
+        final List<int> byteList = [];
+
+        _downloadSubscription = response.stream.listen(
+          (List<int> chunk) {
+            byteList.addAll(chunk);
+            if (contentLength > 0 && mounted) {
+              setState(() {
+                _downloadProgress = (byteList.length / contentLength).clamp(0.0, 1.0);
+              });
+            }
+          },
+          onDone: () {
+            if (mounted) {
+              setState(() {
+                _cloudPdfBytes = Uint8List.fromList(byteList);
+                _isLoading = false;
+              });
+            }
+          },
+          onError: (error) {
+            if (mounted) {
+              setState(() => _errorMessage = 'Download Error:\n$error');
+            }
+          },
+          cancelOnError: true,
+        );
+      } else {
+        if (mounted) {
+          setState(() => _errorMessage = 'Server Error (HTTP ${response.statusCode})');
+        }
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _errorMessage = 'Connection Error: $e');
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final bool isLocalAsset = widget.assetPath != null && widget.assetPath!.isNotEmpty;
+
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title, style: const TextStyle(color: Colors.white, fontSize: 16)),
+        backgroundColor: isLocalAsset ? const Color(0xFF76C843) : const Color(0xFFFF5A5A),
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
       body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 12),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 8.0,
-              ),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Container(
+          margin: const EdgeInsets.all(12),
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 6, offset: Offset(0, 3))],
+          ),
+          child: Builder(
+            builder: (context) {
+              // ၁။ Local ဖိုင်ဆိုလျှင် - RAM မစားသော တိုက်ရိုက် Asset စနစ်ကို အသုံးပြုမည်
+              if (isLocalAsset) {
+                return SfPdfViewer.asset(
+                  widget.assetPath!,
+                  canShowScrollHead: true,
+                );
+              }
+
+              // ၂။ Cloud ဖိုင်များအတွက် Loading
+              if (_isLoading) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                            icon: const Icon(
-                              Icons.arrow_back,
-                              color: Colors.white,
-                              size: 28,
-                            ),
-                            onPressed: () => Navigator.pop(context),
-                          ),
-                          const SizedBox(width: 8),
-                          const AppLogo(size: 60),
-                        ],
+                      CircularProgressIndicator(
+                        value: _downloadProgress > 0 ? _downloadProgress : null,
+                        color: const Color(0xFFFF5A5A),
                       ),
-                      TextButton(
-                        onPressed: () => Navigator.of(
-                          context,
-                        ).popUntil((route) => route.isFirst),
-                        child: const Text(
-                          'Login',
-                          style: TextStyle(color: Colors.black87, fontSize: 16),
-                        ),
+                      const SizedBox(height: 16),
+                      Text('Downloading... ${(_downloadProgress * 100).toStringAsFixed(0)}%'),
+                    ],
+                  ),
+                );
+              }
+
+              // ၃။ Cloud ဖိုင် Error ပြသခြင်း
+              if (_errorMessage != null) {
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(_errorMessage!, textAlign: TextAlign.center, style: const TextStyle(color: Colors.red)),
+                      const SizedBox(height: 16),
+                      ElevatedButton(
+                        onPressed: _fetchCloudPdf,
+                        child: const Text('Try Again'),
                       ),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 32,
-                      vertical: 12,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(
-                      title.contains('-') ? title.split(' - ')[1] : title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 10),
-            Expanded(
-              child: Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                  vertical: 8.0,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 6,
-                      offset: Offset(0, 3),
-                    ),
-                  ],
-                ),
-                clipBehavior: Clip.antiAlias,
-                child: (assetPath != null && assetPath!.isNotEmpty)
-                    ? SfPdfViewer.asset(
-                        assetPath!,
-                        canShowScrollHead: true,
-                        canShowScrollStatus: true,
-                      )
-                    : const Center(
-                        child: Text(
-                          'PDF File Not Found!',
-                          style: TextStyle(fontSize: 16, color: Colors.black54),
-                        ),
-                      ),
-              ),
-            ),
-          ],
+                );
+              }
+
+              // ၄။ Cloud မှ Memory သို့ ဝင်လာပါက ဖတ်မည်
+              if (_cloudPdfBytes != null) {
+                return SfPdfViewer.memory(_cloudPdfBytes!, canShowScrollHead: true);
+              }
+
+              return const Center(child: Text('PDF File Not Found!', style: TextStyle(color: Colors.black54)));
+            },
+          ),
         ),
       ),
     );

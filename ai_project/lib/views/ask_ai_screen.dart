@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class ChatMessage {
   final String text;
@@ -20,12 +21,22 @@ class _AskAIScreenState extends State<AskAIScreen> {
   final List<ChatMessage> _messages = [];
   bool _isLoading = false;
 
-  // Paste your OpenAI API Key below (starts with sk-...)
-  static const String _openAiApiKey = '';
+  // .env ဖိုင်ထဲမှ OPENAI_API_KEY ကို ဆွဲယူခြင်း
+  final String _openAiApiKey = dotenv.env['OPENAI_API_KEY'] ?? '';
 
   Future<void> _sendMessage() async {
     final text = _controller.text.trim();
     if (text.isEmpty) return;
+
+    if (_openAiApiKey.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('API Key not found in .env file!'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
 
     setState(() {
       _messages.add(ChatMessage(text: text, isUser: true));

@@ -19,6 +19,7 @@ dependencies:
   shared_preferences: ^2.5.5
   image_picker: ^1.2.3
   syncfusion_flutter_pdfviewer: ^33.2.13
+  flutter_dotenv: ^6.0.1
 
 dev_dependencies:
   flutter_test:
@@ -31,5 +32,15 @@ flutter:
   # Assets ဖိုင်များ
   assets:
     - assets/
-    # - assets/books/
+    - assets/env
+    # PDF ဖတ်စာအုပ်များ
+    - assets/books/myanmar.pdf
+    - assets/books/english.pdf
+    - assets/books/mathematic.pdf
+    - assets/books/chemistry.pdf
+    - assets/books/physics.pdf
+    - assets/books/biology.pdf
+    - assets/books/economic.pdf
+    # RAG အတွက် အသုံးပြုမည့် Text Data ဖိုင်
+    - "assets/texts/project g12 guidance.txt"
     # - assets/questions/

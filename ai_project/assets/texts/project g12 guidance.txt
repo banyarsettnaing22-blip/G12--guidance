@@ -1,0 +1,1875 @@
+============================================================
+GRADE 12 TEXTBOOK CONTENT FOR RAG SYSTEM
+============================================================
+
+[SYSTEM] This document contains the complete content of Grade 12 textbooks 
+for use in Retrieval-Augmented Generation (RAG) systems. It is organized 
+by subject, chapter, and topic for optimal retrieval.
+
+============================================================
+SUBJECT: BIOLOGY
+============================================================
+
+[CHAPTER 1: INTRODUCTION TO BIOLOGY]
+============================================================
+
+[TOPIC 1.1: THEMES OF BIOLOGY]
+Biology is divided into five major themes: organization, information, 
+energy and matter, interactions, and evolution.
+
+Theme 1: New Properties Emerge at Successive Levels of Biological 
+Organization - The hierarchy of life: biosphere, ecosystem, community, 
+population, organism, organ system, organ, tissue, cell, organelle, 
+molecule, atom. New properties emerge because of interactions among 
+components at lower levels.
+
+Theme 2: Life's Processes Involve the Expression and Transmission of 
+Genetic Information - The genetic information is encoded in nucleotide 
+sequences of DNA. DNA transmits heritable information from parents to 
+offspring. DNA sequences (genes) act as instructions to make proteins 
+through transcription (DNA to mRNA) and translation (mRNA to protein).
+
+Theme 3: Life Requires the Transfer and Transformation of Energy and 
+Matter - Energy flows through ecosystems. Producers convert energy from 
+sunlight to chemical energy. Some energy is passed to consumers, and 
+the rest is lost as heat.
+
+Theme 4: Molecules to Ecosystems, Interactions in Biological Systems - 
+Organisms interact continuously with physical factors. In negative 
+feedback, accumulation of product slows its production. In positive 
+feedback, product speeds up its own production.
+
+Theme 5: Evolution for the Unity and Diversity of Life - Evolution 
+is the process of change that has transformed life on Earth, accounting 
+for the unity and diversity of life. Domain Bacteria and Archaea consist 
+of prokaryotes. Domain Eukarya includes various groups of protists, 
+fungi, plants, and animals.
+
+[TOPIC 1.2: IMPORTANCE OF BIOLOGY IN DAILY LIFE]
+Agriculture - Major agricultural products include foods, fibers, fuels, 
+and raw materials. Myanmar's agricultural exports include rice, maize, 
+blackgram, greengram, pigeonpea, chickpea, sesame, onion, tamarind, 
+raw rubber, vegetables, and fruits.
+
+Rice (Oryza sativa) production is based on environment resulting in 
+rainfed lowland rice, winter rice, deep-water rice, upland rice, and 
+irrigated rice. Wheat (Triticum aestivum) is a grass cultivated for 
+its seeds. Maize (Zea mays) is a tropical plant that prefers warm 
+humid weather.
+
+Horticulture - Defined as the applied science of cultivating and 
+growing plants for consumption and aesthetic purposes. Major types: 
+olericulture (vegetable growing), pomology (fruits and nuts), 
+viticulture (grapes), floriculture (flowers), turf management, 
+arboriculture (trees), landscape horticulture, and postharvest 
+physiology.
+
+Hydroponic Culture - Growing plants without soil using water-based 
+mineral nutrient solutions. Uses less water than traditional systems 
+and allows faster growth and higher yields.
+
+Aquaculture - Farming of aquatic organisms including fish, crustaceans, 
+molluscs, algae, and aquatic plants. Fish farming (pisciculture) 
+includes commercial breeding of carp, salmon, tilapia, and catfish. 
+Mariculture involves cultivation of marine organisms.
+
+Livestock - Domesticated land-living animals raised to provide meat, 
+milk, eggs, feathers, transportation, or cultivation assistance. 
+Common livestock: cattle, sheep, goats, pigs, horses, chickens, ducks.
+
+Food - Food classification: heat/energy producing foods (carbohydrates 
+and fats), body-building foods (protein), protective foods (vitamins 
+and minerals), and luxury foods. Lactobacillus helps form curd from 
+milk. Yeast is used in fermentation.
+
+Health and Medicine - Pharmacognosy deals with secondary metabolites 
+found in plants, animals, and microbial sources. Many modern medicines 
+are derived from plants: salicylic acid (willow bark), quinine 
+(cinchona tree), digitalis (foxglove), morphine and codeine (opium 
+poppy).
+
+Animal-based medicines include leeches (anti-coagulants for surgery), 
+viper venom (bradykinin for hypertension treatment), maggots (wound 
+debridement), spider silk (artificial ligaments), salmon calcitonin 
+(bone loss treatment), and horseshoe crab blood (vaccine testing).
+
+Clothing and Shelter - Plant fibres: cotton (Gossypium spp.), jute 
+(Corchorus spp.). Sericulture involves rearing silkworm moths 
+(Bombax mori) for silk production. Wool is obtained from sheep and 
+other mammals. Wood: teak (Tectona grandis) and pyinkado 
+(Xylia dolabriformis) are valuable timber yielding plants of Myanmar.
+
+============================================================
+[CHAPTER 2: MOLECULAR BIOLOGY]
+============================================================
+
+[TOPIC 2.1: INTRODUCTION TO MOLECULAR BIOLOGY]
+Molecular biology studies the molecular basis of biological activity 
+in and between cells. Nucleic acids (DNA and RNA) are the main 
+information-carrying molecules.
+
+DNA Structure - Double helix consisting of two polynucleotide strands. 
+Each nucleotide has: five-carbon deoxyribose sugar, phosphate group, 
+and nitrogen-containing base. Bases: adenine (A), guanine (G) 
+(purines, two rings), cytosine (C), thymine (T) (pyrimidines, 
+single ring). Complementary base pairing: A pairs with T (2 hydrogen 
+bonds), G pairs with C (3 hydrogen bonds). Strands are antiparallel 
+(5' to 3' and 3' to 5').
+
+RNA Structure - Single-stranded, contains adenine (A), uracil (U), 
+cytosine (C), and guanine (G). Types: mRNA (template for translation), 
+tRNA (carries amino acids), rRNA (reads codon on mRNA).
+
+DNA Replication - Semiconservative method. Helicase unwinds the 
+double helix. DNA polymerase III cannot initiate synthesis; needs 
+RNA primer from primase. Leading strand forms continuously toward 
+replication fork. Lagging strand forms in Okazaki fragments (100-200 
+nucleotides) joined by DNA ligase. DNA polymerase I carries out 
+mismatch repair. Telomeres protect chromosome ends.
+
+[TOPIC 2.2: GENETIC CODE]
+Genetic code is a set of rules converting nucleotide sequence to amino 
+acid sequence. Triplet code produces 64 possible combinations (4×4×4). 
+AUG is start codon coding for methionine. UAA, UAG, UGA are 
+terminator codons.
+
+Characteristics: (1) Redundant - multiple codons can code for same 
+amino acid. (2) Continuous - reads as series of three-letter codons 
+without spaces. (3) Nearly universal - same codon codes for same amino 
+acid in almost all organisms.
+
+[TOPIC 2.3: PROTEIN SYNTHESIS]
+Transcription - Occurs in nucleus. mRNA synthesized based on DNA 
+template. Stages: initiation (RNA polymerase binds), elongation 
+(mRNA strand synthesized 5' to 3'), termination (RNA polymerase 
+detaches at termination signal). Pre-mRNA modified: 5' cap added, 
+3' poly-A tail added, introns removed by splicing.
+
+Translation - Occurs in cytoplasm. Converts nucleotide sequence to 
+amino acid sequence. Ribosome has small subunit (mRNA attachment) and 
+large subunit (A, P, E sites for tRNA). tRNA has anticodon and carries 
+specific amino acid.
+
+Initiation: Small ribosomal subunit attaches near start codon (AUG), 
+initiator tRNA with UAC anticodon binds, large subunit joins.
+
+Elongation: tRNA with polypeptide in P site, peptide bond forms, 
+tRNA with next amino acid enters A site, polypeptide chain transferred, 
+mRNA moves forward by one codon.
+
+Termination: Stop codon reached, release factor cleaves polypeptide 
+from last tRNA.
+
+[TOPIC 2.4: GENETIC ENGINEERING]
+Genetic engineering - Alteration of genetic material. Transgenic 
+organisms (GMOs) have foreign DNA introduced to their genome.
+
+Recombinant DNA - Transferring gene from one organism to another 
+using vector (plasmid, virus, liposome, or gene gun).
+
+Golden Rice - Genetically modified rice containing beta-carotene 
+(converted to vitamin A). Benefits: increased crop yield, heat and 
+drought tolerance, pest resistance, enhanced nutritional value.
+
+Genetically Modified Animals - Foreign gene inserted into animal oocyte 
+which is fertilized and implanted in host female. Used to produce 
+pharmaceutical products (human proteins in milk).
+
+============================================================
+[CHAPTER 3: TRANSPORT SYSTEM IN ORGANISMS]
+============================================================
+
+[TOPIC 3.1: TRANSPORT SYSTEM IN PLANTS]
+Xylem transports water and inorganic ions from roots. Phloem transports 
+sucrose and amino acids from leaves to other parts. Xylem vessels are 
+dead, empty hollow cells with no end walls. Phloem sieve tubes are 
+living cells with cytoplasm but no nucleus.
+
+[TOPIC 3.2: TRANSPORT MECHANISMS IN PLANTS]
+Apoplastic pathway - Water moves through cell walls, dead cells, and 
+xylem tubes. Occurs more rapidly. Casparian strip (suberin band) 
+blocks apoplastic pathway at endodermis.
+
+Symplastic pathway - Water moves through cytoplasm and plasmodesmata 
+or vacuole. Slower than apoplastic pathway.
+
+[TOPIC 3.3: TRANSPIRATION]
+Transpiration - Evaporation of water from leaves through stomata. 
+Factors affecting rate: humidity (lower humidity = faster), wind speed 
+(faster wind = faster), temperature (higher temperature = faster), 
+light intensity (stomata open during day), very dry conditions 
+(plants may close stomata).
+
+Benefits: ascent of sap, removal of excess water, cooling effect 
+(10-15°C reduction), mechanical tissue development, mineral salt 
+distribution, increasing mineral salt concentration, root system 
+development, quality of fruits, resistance to moderate drought, 
+turgidity, supplies water for photosynthesis.
+
+[TOPIC 3.4: TRANSLOCATION]
+Translocation - Movement of dissolved substances through plant. 
+Food synthesized in leaves passes downwards or upwards in sieve tubes 
+of phloem. Both upward and downward movement may occur simultaneously.
+
+[TOPIC 3.5: TRANSPORT SYSTEM IN ANIMALS]
+Mass transport system features: exchange surfaces, system of vessels, 
+way to ensure correct direction, way to move materials fast enough, 
+suitable transport medium, way to adapt rate of transport.
+
+Open circulatory system - Blood pumped by tubular heart leaves 
+open-ended vessels to blood spaces surrounding tissues. Found in 
+arthropods (insects, spiders, crabs).
+
+Closed circulatory system - Blood pumped by heart into blood vessels. 
+Single circulation (fish): blood passes once through heart. Double 
+circulation (birds and mammals): blood passes twice through heart.
+
+[TOPIC 3.6: CIRCULATORY SYSTEM]
+Systemic circulation carries oxygenated blood from heart to body cells. 
+Pulmonary circulation carries deoxygenated blood from heart to lungs.
+
+[TOPIC 3.7: CARDIOVASCULAR SYSTEM IN MAMMALS]
+Heart structure - Four chambers: right atrium, left atrium, right 
+ventricle, left ventricle. Tricuspid valve (right), bicuspid/mitral 
+valve (left). Semilunar valves at base of pulmonary artery and aorta.
+
+Blood vessels - Arteries carry blood away from heart (thick walls with 
+elastic fibers). Veins carry blood back to heart (thinner walls, 
+semilunar valves). Capillaries have very thin walls (one cell thick) 
+for diffusion.
+
+Blood components - Plasma (50% of blood volume), erythrocytes 
+(red blood cells, 5 million per mm³, contain haemoglobin, no nucleus), 
+leucocytes (white blood cells, 4,000-11,000 per mm³, defend against 
+infection), platelets (150,000-400,000 per mm³, involved in blood 
+clotting).
+
+Blood clotting process - Thromboplastin converts prothrombin to 
+thrombin. Thrombin converts fibrinogen to fibrin. Fibrin forms mesh 
+covering wound and trapping red blood cells.
+
+Cardiac cycle - Atrial systole (contraction of atria), ventricular 
+systole (contraction of ventricles), diastole (relaxation). One cycle 
+lasts about 0.8 seconds in humans.
+
+Control of heartbeat - Sinoatrial node (SAN) is natural pacemaker 
+in right atrium. Excitation spreads to atrioventricular node (AVN), 
+then bundle of His, then Purkyne tissue.
+
+============================================================
+[CHAPTER 4: DISEASES IN PLANTS AND ANIMALS]
+============================================================
+
+[TOPIC 4.1: PLANT DISEASES]
+Plant disease - Abnormal growth and/or dysfunction of plant. 
+Biotic diseases caused by living organisms (fungi, bacteria, viruses). 
+Abiotic diseases caused by non-living environmental conditions.
+
+Disease triangle - Three factors: host plant, pathogen, environmental 
+conditions.
+
+Fungal diseases - Over 8,000 species. Genera: Alternaria (leaf spots), 
+Aspergillus (rots of seeds), Botrytis (blight), Fusarium (root rot), 
+Puccinia (rust of cereals), Rhizopus (soft rot of fruits), 
+Sclerotinia (soft rot of vegetables).
+
+Bacterial diseases - Approximately 200 types. Genera: Agrobacterium 
+(crown gall), Erwinia (fire blight), Pseudomonas (leaf spot), 
+Streptomyces (scab of potato), Xanthomonas (blight of beans, rice).
+
+Viral diseases - Intracellular pathogenic particles. Examples: tobacco 
+mosaic, tomato mosaic, barley yellow dwarf, potato leaf roll.
+
+Control methods - Biological (living microorganisms), physical 
+(temperature, moisture, irradiation), chemical (bactericides, 
+fungicides, nematicides).
+
+[TOPIC 4.2: ANIMAL DISEASES]
+Non-infectious diseases - Not caused by pathogens. Causes: aging, 
+genetics, malnutrition, lifestyle, environment. Examples: cardiovascular 
+disease, cancer, diabetes, Alzheimer's.
+
+Cardiovascular disease - Atheroma formation: white blood cells and 
+lipids clump under endothelium forming fatty streaks. Atherosclerosis 
+is hardening of arteries.
+
+Angina: Plaques build in coronary arteries causing chest pain during 
+exercise. Myocardial infarction (heart attack): coronary artery 
+completely blocked by blood clot. Stroke: interruption of normal blood 
+supply to brain. Deep vein thrombosis (DVT): blood clot in deep veins.
+
+Risk factors - Non-modifiable: genes, age, gender. Modifiable: smoking, 
+inactivity, high blood pressure, diet and obesity.
+
+Infectious diseases - Caused by pathogens. Malaria: caused by four 
+species of Plasmodium. Transmitted by female Anopheles mosquito. 
+Plasmodium multiplies in human liver and red blood cells. Treatment: 
+quinine, chloroquine, proguanil, mefloquine, artesunate. Prevention: 
+reduce mosquitoes, avoid being bitten, use drugs.
+
+============================================================
+[CHAPTER 5: COORDINATION AND RESPONSE]
+============================================================
+
+[TOPIC 5.1: COORDINATION AND RESPONSE IN PLANTS]
+Stimulus - Detectable change in internal or external environment. 
+Plant hormones (phytohormones) coordinate plant responses.
+
+[TOPIC 5.2: PLANT GROWTH REGULATORS]
+Auxin - First plant growth regulator. Indole acetic acid (IAA). 
+Effects: root inhibition, parthenocarpy (seedless fruits), cell 
+elongation, abscission, cell division.
+
+Gibberellin - Produced in young organs. Effects: fruit growth, 
+stem and leaf growth, seed germination (stimulates hydrolytic 
+enzymes like amylases).
+
+Cytokinin - Adenine derivative. Effects: flowering, promotes lateral 
+bud development, development of chloroplast.
+
+Ethylene - Only gaseous phytohormone. Effects: stimulates fruit 
+ripening, causes drooping of leaves and flowers, induces rapid growth 
+of internodes.
+
+Abscisic acid - Stress hormone. Effects: causes abscission, includes 
+synthesis of carotenoids, acts as antagonist of all growth promoters.
+
+Seed dormancy - Internal inhibition of germination. Causes: hard seed 
+coats, immature embryo, light sensitivity, germination inhibitors. 
+Broken by scarification, stratification, hormonal treatment.
+
+Seed germination types - Epigeal (cotyledons pushed above ground, 
+e.g., bean), hypogeal (cotyledons stay in soil, e.g., mango, coconut), 
+vivipary (germination inside fruit, e.g., mangroves).
+
+Photoperiodism - Effect of day length on flowering. Short day plants 
+(soybean, onion), long day plants (radish, potato), day neutral plants 
+(tomato, cotton).
+
+[TOPIC 5.3: COORDINATION AND RESPONSE IN ANIMALS]
+Human nervous system - Central nervous system (brain and spinal cord), 
+peripheral nervous system.
+
+Brain parts - Cerebrum (largest, intellect, learning, memory), 
+thalamus (relay station), hypothalamus (regulates internal environment), 
+midbrain (visual and auditory processing), cerebellum (coordination of 
+posture and movements), pons (relay centre), medulla oblongata 
+(reflexes, heart rate, breathing).
+
+Neurones - Dendrites receive impulses, axons conduct impulses away 
+from cell body. Myelin sheath insulates and increases speed.
+
+Synapses - Connection between neurones. Neurotransmitters carry 
+signal across synaptic cleft. Acetylcholine, dopamine, serotonin, 
+endorphins, norepinephrine.
+
+[TOPIC 5.4: SENSE ORGANS]
+Eye structure - Sclera (outer coat), cornea (transparent), iris 
+(controls pupil size), lens (focuses light), retina (contains rod 
+cells for night vision and cone cells for colour vision), fovea 
+(sharper vision), optic nerve (transmits impulses).
+
+Accommodation - Focusing on distant objects: ciliary muscles relax, 
+lens flattens. Focusing on near objects: ciliary muscles contract, 
+lens becomes more convex.
+
+[TOPIC 5.5: ENDOCRINE SYSTEM]
+Endocrine glands - Anterior pituitary (hGH, TSH, ACTH, FSH, LH, 
+prolactin), posterior pituitary (ADH, oxytocin), thyroid (thyroxine, 
+calcitonin), parathyroid (PTH), adrenal cortex (glucocorticoids, 
+mineralocorticoids), adrenal medulla (epinephrine, norepinephrine), 
+pancreas (insulin, glucagon), ovaries (estrogen, progesterone), 
+testes (testosterone).
+
+============================================================
+[CHAPTER 6: BIODIVERSITY AND CONSERVATION]
+============================================================
+
+[TOPIC 6.1: BIODIVERSITY]
+Three levels - Ecosystem diversity (variation in ecosystems), species 
+diversity (number of species), genetic diversity (genetic variation 
+within species).
+
+[TOPIC 6.2: BIODIVERSITY IN MYANMAR]
+Forest types - Mixed deciduous (38%), Hill and temperate evergreen 
+(25%), Tropical evergreen (16%), Dry forest (10%), Deciduous 
+dipterocarp (5%), Tidal/beach/dune/swamp (4%), Fallow land (2%).
+
+Endangered species - Asian elephant (Elephas maximus), Eld's deer 
+(Rucervus eldii thamin), Irrawaddy dolphin (Orcaella brevirostris), 
+green peafowl (Pavo muticus), Burmese star tortoise (Geochelone 
+platynota).
+
+[TOPIC 6.3: THREATS TO BIODIVERSITY]
+Major threats - Habitat destruction, climate change, pollution, 
+overexploitation, invasive alien species.
+
+Habitat destruction causes: large-scale industry, mining, cattle 
+rearing, commercial fishing, dam construction, plantation cropping, 
+agriculture.
+
+Invasive alien species - Water hyacinth, golden apple snails.
+
+Genetic pollution - Transfer of genes from crop plants to wild 
+species. Related to GMO contamination.
+
+Overexploitation - Overfishing, overlogging, overhunting. Illegal 
+wildlife trade valued at $10 billion per year.
+
+Climate change - Rising ocean temperatures, diminishing Arctic sea ice, 
+shifts in vegetation zones.
+
+Human overpopulation - Strains on resources leading to deforestation, 
+decreased biodiversity, pollution, and emissions.
+
+[TOPIC 6.4: CONSERVATION]
+In situ conservation - Natural habitat (wildlife sanctuaries, national 
+parks, biosphere reserves).
+
+Ex situ conservation - Outside natural habitats: captive breeding, 
+seed banks, botanical gardens.
+
+Protected areas in Myanmar - Scientific reserve, national park, marine 
+national park, nature reserve, wildlife sanctuary, community forest.
+
+============================================================
+SUBJECT: CHEMISTRY
+============================================================
+
+[CHAPTER 1: CHEMICAL BONDING AND INTERMOLECULAR FORCES]
+============================================================
+
+[TOPIC 1.1: BASIC CONCEPTS]
+Valence electrons - Electrons in outermost shell. Equal to group 
+number in Periodic Table. Only valence electrons can take part in 
+chemical bonding. Octet rule: atoms gain, lose, or share electrons 
+to achieve stable electronic structure of noble gases (8 electrons 
+in valence shell).
+
+Electronegativity (EN) - Measure of ability of atom to attract 
+shared electrons. Electron affinity (EA) - Energy released when 
+electron added to gaseous atom. Ionisation energy (IE) - Energy 
+required to remove electron from gaseous atom.
+
+Types of chemical bonding - Ionic bonding, covalent bonding, metallic 
+bonding. Intermolecular forces: hydrogen bonding, van der Waals 
+forces (ion-dipole, dipole-dipole, London dispersion forces).
+
+[TOPIC 1.2: IONIC BONDING]
+Ionic bonding - Transfer of electrons from atom with small ionisation 
+energy to atom with large electron affinity. Electrostatic attractions 
+between cations and anions. Occurs when electronegativity difference 
+> 1.8.
+
+Crystal lattice - Geometric arrangement of ions. Unit cell is smallest 
+repeating unit. Simple cubic (sc), face-centred cubic (fcc), 
+body-centred cubic (bcc). In NaCl, coordination ratio is 6:6.
+
+[TOPIC 1.3: COVALENT BONDING]
+Covalent bonding - Sharing one or more pairs of valence electrons 
+between atoms. Occurs between non-metals. Single bonds (one pair), 
+double bonds (two pairs), triple bonds (three pairs). Higher number 
+of bonded electrons = shorter bond length, stronger bond.
+
+Coordinate bond (dative bond) - Both shared electrons donated by one 
+atom. Example: NH₄⁺, H₃O⁺.
+
+Lewis structures - Steps: (1) Calculate total valence electrons, 
+(2) Write skeleton arrangement, (3) Subtract shared electrons from 
+total, place remaining as unshared pairs, (4) Insert lone pairs to 
+complete octet.
+
+Exceptions to octet rule - Electron-deficient molecules (NO, BeCl₂, 
+BF₃), expanded valence shell molecules (PF₅, ICl₃, SF₆).
+
+VSEPR theory - Valence Shell Electron Pair Repulsion: electron pairs 
+arrange to minimise repulsion. Repulsion order: bonding pair-bonding 
+pair < lone pair-bonding pair < lone pair-lone pair.
+
+Shapes - Linear (AX₂, 180°), triangular planar (AX₃, 120°), 
+tetrahedral (AX₄, 109.5°).
+
+[TOPIC 1.4: INTERMOLECULAR FORCES]
+Polar molecules - Difference in electronegativity between bonded 
+atoms creates dipole. Non-polar molecules have equal distribution of 
+charge.
+
+Dipole-dipole interaction - Between two dipolar molecules.
+Ion-dipole interaction - Between ion and neutral molecule with dipole.
+London dispersion forces - Temporary dipoles from unsymmetrical 
+electron distribution. Weakest intermolecular forces, exist in all 
+substances.
+Hydrogen bonding - H bonded to electronegative atom (F, O, or N) 
+interacting with lone pair on another electronegative atom. Strongest 
+intermolecular force.
+
+[TOPIC 1.5: METALLIC BONDING]
+Metallic bond - Valence electrons form "sea of electrons" around 
+positive metallic nuclei. Strength increases with: increasing positive 
+charge on ions, decreasing size of metal ions, increasing number of 
+mobile electrons.
+
+============================================================
+[CHAPTER 2: ENERGY CHANGES IN CHEMICAL REACTIONS]
+============================================================
+
+[TOPIC 2.1: ENERGY CHANGES]
+Chemical energy - Energy stored in bonds of chemical compounds. 
+Energy changes during reactions observed as temperature changes or 
+light emission.
+
+Spontaneous reactions - Occur without addition of energy. 
+Non-spontaneous reactions - Need energy to initiate.
+
+Exothermic reactions - Give out energy (products have lower energy 
+than reactants). Examples: combustion, neutralisation, respiration, 
+rusting.
+
+Endothermic reactions - Absorb energy (products have higher energy 
+than reactants). Examples: melting ice, cooking egg, thermal 
+decomposition.
+
+[TOPIC 2.2: ENTHALPY CHANGES]
+Enthalpy change (ΔH) - Heat absorbed or released at constant pressure. 
+Positive for endothermic, negative for exothermic.
+
+Standard enthalpy change (ΔH°) - At standard conditions: 25°C (298K), 
+1 atm pressure.
+
+Thermochemical equation - Balanced equation including physical states 
+and ΔH.
+
+Measurement - Calorimeter. q = mcΔT. Specific heat capacity of 
+water = 4.18 J g⁻¹ °C⁻¹.
+
+[TOPIC 2.3: HESS'S LAW]
+Hess's Law - Enthalpy change for reaction is same regardless of route 
+taken. Can be used to calculate enthalpy changes that cannot be 
+measured directly.
+
+Enthalpy cycle - Constructed using formation or combustion data.
+
+Bond energy (bond enthalpy) - Energy needed to break one mole of 
+chemical bonds. Bond breaking absorbs energy (positive ΔH), bond 
+forming releases energy (negative ΔH).
+
+============================================================
+[CHAPTER 3: CHEMICAL KINETICS: RATES OF REACTION]
+============================================================
+
+[TOPIC 3.1: REACTION RATES]
+Rate = change in concentration of reactants or products per unit time.
+Rate = -Δ[reactant]/Δt = +Δ[product]/Δt.
+
+[TOPIC 3.2: COLLISION THEORY AND ACTIVATION ENERGY]
+Collision theory - Reactant particles must collide in correct 
+orientation with sufficient energy to overcome energy barrier.
+
+Activation energy (Ea) - Minimum energy required for successful 
+collision. Activated complex - temporary unstable intermediate.
+
+[TOPIC 3.3: FACTORS AFFECTING REACTION RATES]
+Concentration - Higher concentration = more collisions = faster rate.
+Particle size - Smaller particles = larger surface area = faster rate.
+Pressure - Higher pressure on gases = faster rate.
+Temperature - Higher temperature = more kinetic energy = more 
+successful collisions = faster rate. For every 10°C rise, rate 
+approximately doubles.
+
+Catalysts - Alter rate without being consumed. Positive catalysts 
+increase rate, negative catalysts decrease rate. Homogeneous catalysts 
+same phase as reactants. Heterogeneous catalysts different phase.
+
+Light - Photochemical reactions initiated by light. Brighter light = 
+faster reaction.
+
+============================================================
+[CHAPTER 4: CHEMICAL EQUILIBRIUM]
+============================================================
+
+[TOPIC 4.1: STATE OF DYNAMIC EQUILIBRIUM]
+Reversible reactions - Can proceed in both forward and reverse 
+directions. Dynamic equilibrium: forward and reverse reactions occur 
+at equal rates, concentrations remain constant.
+
+[TOPIC 4.2: LE CHATELIER'S PRINCIPLE]
+Le Chatelier's Principle - If system at equilibrium is subjected to 
+change, equilibrium shifts to counteract the change.
+
+Effect of concentration - Adding reactant shifts equilibrium right 
+(more products). Adding product shifts equilibrium left.
+
+Effect of temperature - Temperature increase favours endothermic 
+reaction. Temperature decrease favours exothermic reaction.
+
+Effect of pressure - Pressure increase shifts equilibrium toward 
+side with fewer moles of gas. Pressure decrease shifts toward side 
+with more moles of gas.
+
+[TOPIC 4.3: EQUILIBRIUM CONSTANTS]
+Law of mass action - For aA + bB ⇌ cC + dD, 
+K_eq = [C]^c[D]^d / [A]^a[B]^b.
+
+K_c uses concentration, K_p uses partial pressures. Large K_eq (>1) 
+= more products. Small K_eq (<1) = more reactants.
+
+============================================================
+[CHAPTER 5: ACID-BASE REACTIONS]
+============================================================
+
+[TOPIC 5.1: THEORIES OF ACIDS AND BASES]
+Arrhenius theory - Acids produce H⁺ ions in water. Bases produce 
+OH⁻ ions in water.
+
+Brønsted-Lowry theory - Acids are proton donors. Bases are proton 
+acceptors. Conjugate acid-base pair: acid and its conjugate base or 
+base and its conjugate acid.
+
+Lewis theory - Acids accept electron pairs. Bases donate electron 
+pairs.
+
+[TOPIC 5.2: IONIC DISSOCIATION OF WATER AND pH]
+Ionic product of water - K_w = [H⁺][OH⁻] = 1.0 × 10⁻¹⁴ at 25°C.
+pH = -log[H⁺], pOH = -log[OH⁻], pH + pOH = 14.
+
+[TOPIC 5.3: IONISATION OF ACIDS AND BASES]
+Strong acids - Completely ionise in water (HCl, HNO₃, H₂SO₄).
+Weak acids - Partially ionise (HF, CH₃COOH).
+Strong bases - Completely ionise (NaOH, KOH).
+Weak bases - Partially ionise (NH₃).
+
+Acid dissociation constant (K_a) = [H⁺][A⁻]/[HA]. Larger K_a = 
+stronger acid. Base dissociation constant (K_b) = [BH⁺][OH⁻]/[B].
+
+[TOPIC 5.4: SALT HYDROLYSIS]
+Salts of strong acid and strong base - Neutral (NaCl, KNO₃).
+Salts of weak acid and strong base - Basic (CH₃COONa).
+Salts of strong acid and weak base - Acidic (NH₄Cl).
+Salts of weak acid and weak base - Depends on relative strengths.
+
+[TOPIC 5.5: BUFFER SOLUTIONS]
+Buffer solution - Resists pH changes on dilution or addition of small 
+amounts of acid or base. Types: weak acid and its salt (CH₃COOH/
+CH₃COONa), weak base and its salt (NH₃/NH₄Cl).
+
+============================================================
+[CHAPTER 6: TRANSITION ELEMENTS]
+============================================================
+
+[TOPIC 6.1: THE 3d SERIES TRANSITION ELEMENTS]
+Transition elements - Atoms with partially filled d subshells or can 
+give rise to cations with incomplete d subshells. 3d series: Sc to Zn.
+
+Electronic configuration - 4s orbital filled before 3d. Exceptions: 
+Cr ([Ar]4s¹3d⁵), Cu ([Ar]4s¹3d¹⁰).
+
+[TOPIC 6.2: CHARACTERISTIC PROPERTIES]
+Physical properties - Solid metals, malleable, ductile, metallic lustre, 
+high tensile strength, good conductors, high melting and boiling points.
+
+Variable oxidation states - Multiple oxidation states due to removal 
+of s and d electrons. Most stable: +3 at beginning, +2 at end.
+
+Coloured compounds and ions - Due to incomplete d orbitals. Examples: 
+Ti³⁺ purple, V³⁺ green, Cr³⁺ violet, Mn²⁺ pale pink, Fe²⁺ green, 
+Co²⁺ pink, Ni²⁺ green, Cu²⁺ blue.
+
+Magnetic properties - Paramagnetic (unpaired electrons), diamagnetic 
+(paired electrons), ferromagnetic (strongly attracted, retains 
+magnetism).
+
+Catalytic properties - Iron (Haber process), vanadium(V) oxide 
+(Contact process), nickel (hydrogenation).
+
+============================================================
+[CHAPTER 7: CHEMISTRY AND GREEN ENVIRONMENT]
+============================================================
+
+[TOPIC 7.1: OUR ENVIRONMENTAL WORLD]
+Carbon cycle - Photosynthesis, respiration, exchange, fossilisation, 
+sedimentation, combustion.
+
+Nitrogen cycle - Nitrogen fixation, nitrification, nitrogen 
+assimilation, ammonification, denitrification.
+
+Phosphorus cycle - No gaseous phase. Cycles through water, soil, 
+sediments. Marine birds return phosphorus from ocean to land through 
+guano.
+
+Sulphur cycle - Moves through rocks, water bodies, atmosphere, living 
+systems. Sources: volcanic eruptions, decaying organisms, industrial 
+processes.
+
+[TOPIC 7.2: POLLUTANTS AND IMPACTS]
+Heavy metals - Arsenic (As³⁺, As⁵⁺), cadmium (Cd²⁺), lead (Pb²⁺, 
+Pb⁴⁺), mercury (Hg⁰, Hg⁺, Hg²⁺). Bioaccumulation of methylmercury 
+in fish.
+
+Pesticides - Organophosphates, organochlorines, carbamates, 
+thiocarbamates, pyrethroids.
+
+POPs - Persistent Organic Pollutants (PCBs, DDT). Long-lasting, 
+lipophilic, accumulate in fatty tissue.
+
+VOCs - Volatile Organic Compounds. Contribute to ozone and fine 
+particulates formation, smog.
+
+[TOPIC 7.3: RADIOACTIVE SUBSTANCES]
+Radioactivity - Spontaneous decay of heavy nuclei emitting alpha, 
+beta, gamma radiation. Alpha particles blocked by paper, beta by 
+aluminium foil, gamma by concrete or lead.
+
+Radioisotopes uses - Carbon-14 (radiocarbon dating), Uranium-235 
+(nuclear fuel), Cesium-137 (medical therapy).
+
+[TOPIC 7.4: GREEN TECHNIQUES]
+Biofuels - Bioethanol from sugar cane, corn, lignocellulosic materials. 
+Biodiesel from plant oils (remove glycerine).
+
+Wastewater treatment - Agricultural waste adsorbents, activated carbon, 
+rice husk ceramics, photocatalysts (TiO₂, ZnO, Fe₂O₃).
+
+Green synthesis - Adipic acid from glucose. Trivalent chromium 
+plating (less toxic than hexavalent chromium).
+
+============================================================
+[CHAPTER 8: ORGANIC COMPOUNDS AND MACROMOLECULES]
+============================================================
+
+[TOPIC 8.1: ORGANIC COMPOUNDS]
+Ethers - R-O-R'. Dehydration of alcohols with H₂SO₄ at 140°C.
+
+Aldehydes and Ketones - RCHO and RCOR'. Oxidation of primary alcohols 
+gives aldehydes, secondary alcohols gives ketones. Hydration of 
+alkynes gives aldehydes (ethyne) or ketones (other alkynes).
+
+Carboxylic acids - RCOOH. Reaction with metals (salt + H₂), bases 
+(salt + H₂O), carbonates (salt + CO₂ + H₂O). Reduction with LiAlH₄ 
+gives primary alcohols.
+
+Esters - RCOOR'. Esterification: carboxylic acid + alcohol with 
+H₂SO₄. Acidic hydrolysis gives carboxylic acid and alcohol. Basic 
+hydrolysis (saponification) gives sodium salt and alcohol.
+
+Amines - RNH₂ (primary), R₂NH (secondary), R₃N (tertiary). Prepared 
+by heating haloalkane with excess ammonia.
+
+Amides - RCONH₂. Prepared by condensation of carboxylic acid with 
+ammonia.
+
+[TOPIC 8.2: FUNCTIONAL GROUPS]
+Chemical tests - 2,4-DNP (orange precipitate for aldehydes/ketones), 
+Fehling's test (reddish-brown precipitate for aldehydes).
+
+Infrared spectroscopy - Detects bond vibrations. Characteristic 
+absorptions: C-O (1050-1410 cm⁻¹), C=C (1620-1680), C=O (1650-1750), 
+O-H (2500-3300), C-H (2850-3090), N-H (3300-3500).
+
+[TOPIC 8.3: MACROMOLECULES]
+Addition polymers - Monomers with C=C bond. Examples: polyethene 
+(PET), polyvinyl chloride (PVC), Teflon, polystyrene.
+
+Condensation polymers - Two different functional groups, eliminate 
+small molecule (H₂O). Polyesters (terylene/PET from terephthalic 
+acid and ethylene glycol). Polyamides (nylon 6,6 from adipic acid 
+and 1,6-diaminohexane).
+
+Proteins - Polyamides made from amino acids. Peptide bond (amide 
+link) between NH₂ of one amino acid and COOH of another.
+
+Biodegradable plastics - Contain starch granules or made from plant 
+materials (polylactic acid, PLA). Photodegradable plastics contain 
+carbonyl groups that absorb UV light to weaken and break down.
+
+============================================================
+SUBJECT: PHYSICS
+============================================================
+
+[CHAPTER 1: ROTATIONAL MOTION]
+============================================================
+
+[TOPIC 1.1: ROTATIONAL MOTION UNDER CONSTANT ANGULAR ACCELERATION]
+Kinematic equations for angular motion: ω = ω₀ + αt, 
+θ = ω₀t + ½αt², ω² = ω₀² + 2αθ.
+
+[TOPIC 1.2: RELATIONS BETWEEN LINEAR AND ANGULAR QUANTITIES]
+s = rθ, v = rω, a_T = rα (tangential acceleration).
+
+[TOPIC 1.3: CENTRIPETAL ACCELERATION]
+Centripetal acceleration: a_c = v²/r = rω². Direction: toward centre 
+of circle. Resultant acceleration in nonuniform circular motion: 
+a = √(a_c² + a_T²), tanφ = a_T/a_c.
+
+============================================================
+[CHAPTER 2: FORCES IN CIRCULAR MOTION]
+============================================================
+
+[TOPIC 2.1: FORCES CAUSING CENTRIPETAL ACCELERATION]
+Centripetal force: F_C = mv²/r = mrω². Banking angle: tanθ = v²/rg.
+
+[TOPIC 2.2: CENTRIPETAL AND CENTRIFUGAL FORCES]
+Centripetal force is real force toward centre. Centrifugal force is 
+apparent force away from centre. Applications: centrifuge, washing 
+machine, centrifugal pump, centrifugal governor.
+
+============================================================
+[CHAPTER 3: FLUID DYNAMICS]
+============================================================
+
+[TOPIC 3.1: LAMINAR AND TURBULENT FLOW]
+Laminar flow - Smooth paths in layers, no mixing. Turbulent flow - 
+Irregular paths, whirling, direction constantly changing.
+
+[TOPIC 3.2: EQUATION OF CONTINUITY]
+A₁v₁ = A₂v₂ (volume flow rate constant for incompressible fluid).
+
+[TOPIC 3.3: BERNOULLI'S EQUATION]
+p + ½ρv² + ρgh = constant. Sum of pressure energy, kinetic energy 
+per unit volume, potential energy per unit volume remains constant.
+
+Manifestations: lift on aeroplane wings, insect sprayer, Magnus effect 
+on spinning ball, roof flying away during cyclones.
+
+[TOPIC 3.4: VISCOSITY]
+Viscosity - Internal resistance of fluid to motion. Newton's law: 
+τ = -η(dv/dy). SI unit: pascal second (Pa·s) or poiseuille (Pl).
+
+Stokes' law: F_drag = 6πηrv (for spherical object in viscous fluid). 
+Terminal velocity: v_t = 2r²(ρ_particle - ρ_fluid)g/9η.
+
+[TOPIC 3.5: SURFACE TENSION AND CAPILLARITY]
+Surface tension: γ = F/l (force per unit length). SI unit: N/m.
+Capillary rise: h = 2γcosθ/ρgr.
+
+============================================================
+[CHAPTER 4: SOURCES OF ENERGY]
+============================================================
+
+[TOPIC 4.1: ENERGY DEMAND AND CRISIS]
+Non-renewable resources - Limited supply, not replenished at rate 
+consumed (fossil fuels, nuclear energy).
+
+Renewable resources - Replenished by natural processes (solar, wind, 
+hydro, biomass, geothermal).
+
+[TOPIC 4.2: SOLAR ENERGY]
+Solar constant - 1350 W/m² at top of atmosphere. Photovoltaic cells 
+convert light to electricity. Concentrated solar power uses mirrors 
+to focus sunlight.
+
+[TOPIC 4.3: WIND ENERGY]
+Wind power: P = ½ρAv³. Wind turbine converts kinetic energy to 
+electrical energy.
+
+[TOPIC 4.4: HYDROPOWER]
+Available power: P = ηρV·gh. Impoundment facilities use dams. 
+Run-of-river uses natural decline. Pumped storage stores energy.
+
+[TOPIC 4.5: OCEAN ENERGY]
+Tidal energy - From difference in sea levels. Wave energy - From 
+kinetic energy of waves. Ocean thermal energy - From temperature 
+difference between surface and deep water (minimum 20°C).
+
+[TOPIC 4.6: GEOTHERMAL ENERGY]
+Energy from Earth's core. Limited to regions with hot underground 
+rocks. Pumps water into heated rocks, steam drives turbines.
+
+[TOPIC 4.7: BIOMASS]
+Biomass sources: wood, agricultural crops, animal manure, municipal 
+solid waste. Conversion methods: direct combustion, thermochemical 
+(pyrolysis, gasification), chemical (transesterification), biological 
+(fermentation, anaerobic digestion).
+
+Environmental impacts - Global warming (greenhouse gases: CO₂, CH₄, 
+NOx, CFCs), acid rain (SO₂, NOx), air pollution, water pollution.
+
+============================================================
+[CHAPTER 5: HEAT TRANSFER AND THERMODYNAMICS]
+============================================================
+
+[TOPIC 5.1: HEAT TRANSFER]
+Conduction - Heat transfer by adjacent parts without bulk motion. 
+H_cond = kA(T₂-T₁)/l. Thermal conductivity (k) measures ability to 
+conduct heat.
+
+Convection - Heat transfer by fluid motion. Natural convection driven 
+by buoyant force. Forced convection from external means.
+
+Radiation - Heat transfer through electromagnetic waves without medium. 
+Stefan-Boltzmann law: ε = σT⁴. Emissivity (e) = ratio of object's 
+emissive power to blackbody's. H_rad = eσAT⁴.
+
+[TOPIC 5.2: THERMODYNAMICS]
+Zeroth law - Two objects in thermal equilibrium with third object are 
+in equilibrium with each other.
+
+First law - ΔU = Q - W. Internal energy U = 3/2 nRT for monoatomic 
+ideal gas.
+
+Isobaric process (constant pressure): W = p(V_f - V_i).
+Isochoric process (constant volume): ΔU = Q = nC_vΔT.
+Isothermal process (constant temperature): ΔU = 0, W = Q.
+Adiabatic process (no heat transfer): ΔU = -W.
+
+[TOPIC 5.3: HEAT ENGINES]
+Thermal efficiency: η = W/Q_H = (Q_H - Q_C)/Q_H.
+Carnot engine efficiency: η_C = 1 - T_C/T_H.
+
+Four-stroke engine: intake, compression, explosion, power, valve 
+exhaust, exhaust. Diesel engine: intake air only, fuel ignites 
+from compression heat.
+
+============================================================
+[CHAPTER 6: EFFECTS AND CHARACTERISTICS OF SOUND]
+============================================================
+
+[TOPIC 6.1: PROPAGATION OF SOUND]
+Speed of sound - Solid: v = √(Y/ρ), Liquid: v = √(B/ρ), Gas: 
+v = √(γp/ρ). Faster in solids than liquids than gases.
+
+Intensity level: β(dB) = 10log₁₀(I/I₀). Threshold of hearing: 
+10⁻¹² W/m².
+
+[TOPIC 6.2: ECHO]
+Echo - Reflection of sound from hard surface. Distance: v = 2d/t. 
+Echolocation used by bats and whales.
+
+[TOPIC 6.3: AUDIBILITY]
+Human hearing range: 20 Hz to 20,000 Hz. Infrasound (<20 Hz), 
+ultrasound (>20,000 Hz). Ultrasound applications: quality control, 
+prenatal testing, dentistry, cleaning, sonar.
+
+[TOPIC 6.4: DOPPLER EFFECT]
+Doppler effect - Change in frequency due to relative motion between 
+source and observer. f_o = f_s[(v ± v_o)/(v ∓ v_s)].
+
+Applications: red shift (astronomy), radar (velocity measurement), 
+Doppler ultrasound (blood flow).
+
+[TOPIC 6.5: PROPERTIES OF SOUND WAVES]
+Pitch - Determined by frequency (higher frequency = higher pitch).
+Loudness - Determined by amplitude (larger amplitude = louder).
+Quality/Timbre - Distinguishes sounds with same loudness and pitch 
+from different instruments.
+
+============================================================
+[CHAPTER 7: APPLICATIONS OF LIGHT AND OPTICAL INSTRUMENTS]
+============================================================
+
+[TOPIC 7.1: CAMERA]
+Convex lens focuses light to form real inverted image on film/sensor. 
+Aperture controls amount of light. f-number = focal length/diameter 
+of aperture. Shutter controls exposure time.
+
+[TOPIC 7.2: HUMAN EYE]
+Cornea, aqueous humour, lens, vitreous humour refract light. Iris 
+controls pupil size. Retina has rods and cones. Farsightedness 
+(hyperopia): images focus behind retina, corrected by convex lens. 
+Nearsightedness (myopia): images focus in front of retina, corrected 
+by concave lens. Least distance of distinct vision: 25 cm.
+
+[TOPIC 7.3: COMPOUND MICROSCOPE]
+Objective lens (short focal length) and eyepiece (short focal length). 
+Magnifying power = (v_o/u_o)(25/u_e) for final image at infinity.
+
+[TOPIC 7.4: TELESCOPE]
+Astronomical telescope: objective (long focal length), eyepiece 
+(short focal length). Magnifying power = f_o/f_e for normal 
+adjustment. Reflecting telescope uses concave mirror as objective.
+
+[TOPIC 7.5: LASER]
+Laser = Light Amplification by Stimulated Emission of Radiation. 
+Essential elements: laser medium, power supply, optical cavity. 
+Stimulated emission requires population inversion. Characteristics: 
+narrow beam, coherent, monochromatic. Applications: surgery, 
+communication, cutting, barcode reading.
+
+[TOPIC 7.6: FIBRE OPTICS]
+Based on total internal reflection. Core (higher refractive index) 
+and cladding (lower refractive index). Applications: endoscopy, 
+communication.
+
+[TOPIC 7.7: SPECTROMETER]
+Separates and measures spectral components. Uses prism or grating 
+as dispersion element.
+
+[TOPIC 7.8: PHOTOMETRY]
+Luminous flux (Φ) - Power of visible light (lumen, lm).
+Luminous intensity (I_v) - Flux per unit solid angle (candela, cd).
+Luminance - Luminous intensity per unit area (cd/m²).
+Illuminance - Flux incident per unit area (lux, lx). 
+E_v = I_v/r² (inverse square law).
+
+============================================================
+[CHAPTER 8: INTERFERENCE AND DIFFRACTION OF LIGHT]
+============================================================
+
+[TOPIC 8.1: HUYGENS' PRINCIPLE]
+Every point on wavefront is source of secondary wavelets. New wavefront 
+is envelope of wavelets. Wavefront is surface of constant phase.
+
+[TOPIC 8.2: INTERFERENCE OF LIGHT]
+Young's double slit experiment: Constructive interference when 
+d sinθ = mλ (bright fringes). Destructive interference when 
+d sinθ = (m+½)λ (dark fringes). Fringe width: Δy = λD/d.
+
+[TOPIC 8.3: DIFFRACTION OF LIGHT]
+Diffraction - Bending of waves around obstacles or through aperture. 
+Single slit diffraction: Minima at a sinθ = mλ. Width of central 
+maximum = 2λD/a.
+
+[TOPIC 8.4: DIFFRACTION GRATING]
+Multiple parallel slits. Condition for maxima: d sinθ = mλ. 
+Used to resolve light into spectra.
+
+============================================================
+[CHAPTER 9: CAPACITOR AND CAPACITANCE]
+============================================================
+
+[TOPIC 9.1: CAPACITORS]
+Capacitor - Device storing electrical energy in electric field. 
+Capacitance C = Q/V. Unit: farad (F) = C/V. 1 μF = 10⁻⁶ F, 
+1 nF = 10⁻⁹ F, 1 pF = 10⁻¹² F.
+
+[TOPIC 9.2: PARALLEL-PLATE CAPACITOR]
+C = κε₀A/d. Dielectric constant κ = C/C₀ = V₀/V. Permittivity 
+ε = κε₀. Dielectric increases capacitance and maximum operating 
+voltage.
+
+[TOPIC 9.3: ENERGY STORED IN CAPACITOR]
+W = ½QV = ½CV² = ½Q²/C. Charging: V_c = V₀(1 - e⁻ᵗ/ᴿᶜ). 
+Discharging: V_c = V₀e⁻ᵗ/ᴿᴸᶜ. Time constant τ = RC.
+
+[TOPIC 9.4: COMBINATION OF CAPACITORS]
+Parallel: C_eq = C₁ + C₂ + C₃ + ...
+Series: 1/C_eq = 1/C₁ + 1/C₂ + 1/C₃ + ...
+
+============================================================
+[CHAPTER 10: ELECTRICAL ENERGY, POWER AND HEATING EFFECT]
+============================================================
+
+[TOPIC 10.1: ELECTROMOTIVE FORCE]
+EMF (E) - Energy provided by source per unit charge to move round 
+complete circuit. Terminal voltage: V = E - Ir (discharging), 
+V = E (open circuit), V = E + Ir (charging). Circuit equation: 
+I = E/(R + r).
+
+[TOPIC 10.2: BATTERIES IN SERIES AND PARALLEL]
+Series aiding: E_total = E₁ + E₂, r_total = r₁ + r₂.
+Series opposing: E_total = E₁ - E₂, r_total = r₁ + r₂.
+Parallel (identical batteries): E = E_single, r = r_single/2.
+
+[TOPIC 10.3: ELECTRICAL ENERGY AND POWER]
+W = VIt = I²Rt = V²t/R. P = VI = I²R = V²/R. Unit: kWh = 3.60×10⁶ J.
+
+[TOPIC 10.4: JOULE'S LAW]
+H = I²Rt/J (J = 4.2 J cal⁻¹). Heat produced directly proportional 
+to I², R, and t.
+
+============================================================
+[CHAPTER 11: ELECTROMAGNETIC INDUCTION]
+============================================================
+
+[TOPIC 11.1: ALTERNATING CURRENT]
+AC: E = E_m sinωt, I = I_m sinωt. ω = 2πf.
+
+[TOPIC 11.2: ELECTROMAGNETIC INDUCTION]
+Induced current when magnetic flux through loop changes. 
+Magnetic flux: Φ_B = BA cosθ. Magnetic flux density B = μH.
+
+[TOPIC 11.3: FARADAY'S LAW AND LENZ'S LAW]
+Faraday's law: E = -N(dΦ_B/dt). Lenz's law: induced emf opposes 
+change in magnetic flux.
+
+[TOPIC 11.4: APPLICATIONS]
+AC generator: E = NBAω sinωt. Transformer: V_s/V_p = N_s/N_p, 
+V_s I_s = V_p I_p (ideal). Step-up: N_s > N_p, V_s > V_p. 
+Step-down: N_s < N_p, V_s < V_p.
+
+[TOPIC 11.5: POWER TRANSMISSION]
+Power loss = I²R. Transmit at high voltage to reduce current and 
+power loss.
+
+[TOPIC 11.6: HOUSE WIRING]
+Live wire (high voltage), neutral wire (zero volt), earth wire 
+(safety). Circuits: lighting, ring main (power), heating (cooker). 
+Fuse protects circuit from overload.
+
+============================================================
+[CHAPTER 12: ELECTRONICS]
+============================================================
+
+[TOPIC 12.1: ELECTRONIC SYSTEM]
+Transducer converts one form of energy to another. Amplifiers increase 
+signal power. Oscillators produce AC signals. Logic gates: AND, OR, 
+NOT, NAND, NOR, XOR.
+
+[TOPIC 12.2: DIGITAL ELECTRONICS]
+Binary system (0 and 1). Logic circuits use Boolean algebra. 
+Flip-flops store binary data.
+
+[TOPIC 12.3: BASIC ELECTRONIC COMMUNICATION]
+Modulation (AM, FM) combines information signal with carrier wave. 
+Demodulation extracts information. Modulation allows efficient 
+transmission at higher frequencies.
+
+============================================================
+[CHAPTER 13: MODERN PHYSICS]
+============================================================
+
+[TOPIC 13.1: RADIOACTIVITY]
+Alpha decay: emits ⁴He nucleus. Beta decay: emits electron. 
+Gamma decay: emits high-energy photon. Half-life: time for half of 
+radioactive nuclei to decay.
+
+[TOPIC 13.2: NUCLEAR ENERGY]
+Nuclear fission: splitting heavy nucleus. Nuclear fusion: combining 
+light nuclei. Both release energy from mass defect (E = mc²).
+
+[TOPIC 13.3: WAVE-PARTICLE DUALISM]
+Photoelectric effect: light behaves as particles (photons). 
+De Broglie wavelength: λ = h/p. Electron diffraction shows wave 
+nature of particles.
+
+[TOPIC 13.4: SPECIAL THEORY OF RELATIVITY]
+Time dilation: moving clocks run slower. Length contraction: moving 
+objects shorten in direction of motion. E = mc² relates mass and 
+energy.
+
+============================================================
+SUBJECT: MATHEMATICS
+============================================================
+
+[CHAPTER 1: COMPLEX NUMBERS]
+============================================================
+
+[TOPIC 1.1: PURE IMAGINARY UNIT]
+i² = -1. Complex number z = x + yi = (x,y). Operations on complex 
+numbers follow usual rules, but i² = -1.
+
+[TOPIC 1.2: COMPLEX NUMBER OPERATIONS]
+Addition: (a+bi)+(c+di) = (a+c)+(b+d)i.
+Multiplication: (a+bi)(c+di) = (ac-bd)+(ad+bc)i.
+Division: multiply numerator and denominator by conjugate of denominator.
+Conjugate: \bar{z} = x - yi.
+
+[TOPIC 1.3: TRIGONOMETRIC FORM]
+z = r(cosθ + i sinθ), r = |z| = √(x²+y²), x = r cosθ, y = r sinθ.
+Product: z₁z₂ = r₁r₂[cos(θ₁+θ₂) + i sin(θ₁+θ₂)].
+Division: z₁/z₂ = (r₁/r₂)[cos(θ₁-θ₂) + i sin(θ₁-θ₂)].
+Powers: zⁿ = rⁿ(cos nθ + i sin nθ).
+
+[TOPIC 1.4: ROOTS OF COMPLEX NUMBERS]
+n-th roots: z^(1/n) = r^(1/n)[cos((θ+2πk)/n) + i sin((θ+2πk)/n)], 
+k = 0, 1, 2, ..., n-1.
+
+============================================================
+[CHAPTER 2: MATHEMATICAL INDUCTION]
+============================================================
+
+[TOPIC 2.1: PRINCIPLE OF MATHEMATICAL INDUCTION]
+Step 1: Verify statement true for n = 1 (base case).
+Step 2: Assume true for n = k (induction hypothesis).
+Step 3: Prove true for n = k + 1 using the assumption.
+Conclusion: Statement true for all natural numbers n.
+
+Examples: sum of first n odd numbers = n², sum of first n natural 
+numbers = n(n+1)/2.
+
+============================================================
+[CHAPTER 3: ANALYTICAL SOLID GEOMETRY]
+============================================================
+
+[TOPIC 3.1: COORDINATES IN SPACE]
+Point P(x,y,z). Planes: xy-plane (z=0), yz-plane (x=0), zx-plane 
+(y=0). Distance between points: 
+d = √[(x₂-x₁)² + (y₂-y₁)² + (z₂-z₁)²].
+
+[TOPIC 3.2: LINES]
+Directed values: ⟨l,m,n⟩ = ⟨x₂-x₁, y₂-y₁, z₂-z₁⟩.
+Parametric equation: (x,y,z) = (x₁+kl, y₁+km, z₁+kn).
+Coordinate form: (x-x₁)/l = (y-y₁)/m = (z-z₁)/n.
+
+[TOPIC 3.3: PARALLEL, SKEW, PERPENDICULAR LINES]
+Parallel: direction vectors are multiples.
+Perpendicular: dot product of direction vectors = 0.
+Skew: neither parallel nor intersecting.
+
+[TOPIC 3.4: PLANES]
+Equation: ax + by + cz = d. Normal vector: ⟨a,b,c⟩.
+Plane through three points: use cross product of two vectors in plane.
+
+[TOPIC 3.5: SPHERES]
+Equation: (x-h)² + (y-k)² + (z-l)² = r². Center (h,k,l), radius r.
+Tangent plane: line from centre to point of tangency is perpendicular.
+
+============================================================
+[CHAPTER 4: VECTOR ALGEBRA]
+============================================================
+
+[TOPIC 4.1: VECTORS IN 3D]
+Vector \vec{a} = ⟨a₁,a₂,a₃⟩. Addition, subtraction, scalar multiplication 
+component-wise. Magnitude: |\vec{a}| = √(a₁²+a₂²+a₃²).
+Unit vector: \hat{a} = \vec{a}/|\vec{a}|.
+
+[TOPIC 4.2: SCALAR PRODUCT]
+\vec{a}·\vec{b} = a₁b₁ + a₂b₂ + a₃b₃ = |\vec{a}||\vec{b}|cosθ.
+Perpendicular: \vec{a}·\vec{b} = 0. Parallel: \vec{a}·\vec{b} = 
+±|\vec{a}||\vec{b}|.
+
+[TOPIC 4.3: VECTOR PRODUCT]
+\vec{a}×\vec{b} = |\vec{a}||\vec{b}|sinθ \hat{n}. 
+Component form: \vec{a}×\vec{b} = ⟨a₂b₃-a₃b₂, a₃b₁-a₁b₃, a₁b₂-a₂b₁⟩.
+Area of parallelogram = |\vec{a}×\vec{b}|.
+Area of triangle = ½|\vec{a}×\vec{b}|.
+
+[TOPIC 4.4: LINES AND PLANES IN SPACE]
+Line: \vec{r} = \vec{a} + t\vec{b}. Plane: \vec{r} = \vec{a} + t₁\vec{b₁} 
++ t₂\vec{b₂}. Normal: \vec{n} = \vec{b₁}×\vec{b₂}. 
+Cartesian plane: \vec{r}·\vec{n} = \vec{a}·\vec{n}.
+
+============================================================
+[CHAPTER 5: PERMUTATIONS AND COMBINATIONS]
+============================================================
+
+[TOPIC 5.1: COUNTING PRINCIPLES]
+Multiplication principle: m ways then n ways = mn ways.
+Factorial: n! = n(n-1)(n-2)...1, 0! = 1.
+
+[TOPIC 5.2: PERMUTATIONS]
+P(n,r) = n!/(n-r)! = n(n-1)...(n-r+1).
+Number of arrangements of n objects with repetitions: n!/(n₁!n₂!...).
+
+[TOPIC 5.3: COMBINATIONS]
+C(n,r) = n!/[r!(n-r)!].
+Properties: C(n,0)=1, C(n,n)=1, C(n,r)=C(n,n-r).
+
+[TOPIC 5.4: TECHNIQUES]
+Sum of subsets: C(n,0)+C(n,1)+...+C(n,n)=2ⁿ.
+
+============================================================
+[CHAPTER 6: CONIC SECTIONS]
+============================================================
+
+[TOPIC 6.1: CIRCLES]
+Standard form: (x-h)² + (y-k)² = r². Center (h,k), radius r.
+General form: x² + y² + 2gx + 2fy + c = 0.
+Center: (-g,-f), radius = √(g²+f²-c).
+
+[TOPIC 6.2: PARABOLAS]
+Vertex at (0,0): y² = 4px (opens right), y² = -4px (opens left), 
+x² = 4py (opens up), x² = -4py (opens down).
+Vertex at (h,k): (y-k)² = 4p(x-h), (x-h)² = 4p(y-k).
+
+[TOPIC 6.3: ROTATION OF AXES]
+x = x'cosθ - y'sinθ, y = x'sinθ + y'cosθ.
+cot 2θ = (A-C)/B to remove xy term.
+
+============================================================
+[CHAPTER 7: TRIGONOMETRIC FUNCTIONS]
+============================================================
+
+[TOPIC 7.1: GRAPHS]
+Period: 2π for sin, cos; π for tan, cot.
+Amplitude = |a| for y = a sin(bx).
+Five key points method for graphing.
+
+[TOPIC 7.2: INVERSE TRIG FUNCTIONS]
+sin⁻¹ x restricted domain [-π/2, π/2].
+cos⁻¹ x restricted domain [0, π].
+tan⁻¹ x restricted domain (-π/2, π/2).
+
+[TOPIC 7.3: DIFFERENTIATION]
+d/dx sin x = cos x, d/dx cos x = -sin x, d/dx tan x = sec² x,
+d/dx cot x = -csc² x, d/dx sec x = sec x tan x, d/dx csc x = -csc x cot x.
+
+============================================================
+[CHAPTER 8: LOGARITHMIC AND EXPONENTIAL FUNCTIONS]
+============================================================
+
+[TOPIC 8.1: LOGARITHMIC FUNCTIONS]
+log_b x = y ⇔ bʸ = x. Domain: x > 0, Range: all real.
+Natural log: ln x = log_e x.
+
+[TOPIC 8.2: DIFFERENTIATION]
+d/dx log_b x = 1/(x ln b), d/dx ln x = 1/x.
+
+[TOPIC 8.3: EXPONENTIAL FUNCTIONS]
+y = bˣ. Domain: all real. Range: y > 0.
+
+[TOPIC 8.4: DIFFERENTIATION]
+d/dx bˣ = bˣ ln b, d/dx eˣ = eˣ.
+d/dx b^{u(x)} = b^{u(x)} ln b · du/dx.
+
+============================================================
+[CHAPTER 9: APPLICATION OF DIFFERENTIATION]
+============================================================
+
+[TOPIC 9.1: TANGENT AND NORMAL LINES]
+Tangent: y - y₁ = f'(x₁)(x - x₁).
+Normal: y - y₁ = -1/f'(x₁)(x - x₁) (if f'(x₁) ≠ 0).
+
+[TOPIC 9.2: MAXIMUM AND MINIMUM]
+Critical point: f'(x) = 0 or undefined.
+First derivative test: sign change from + to - = local max, - to + = local min.
+Second derivative test: f''(x) > 0 = local min, f''(x) < 0 = local max.
+Concavity: f''(x) > 0 = concave up, f''(x) < 0 = concave down.
+Inflection point: f''(x) changes sign.
+
+[TOPIC 9.3: LINEARIZATION]
+L(x) = f(a) + f'(a)(x-a). Approximates f(x) near x = a.
+
+============================================================
+[CHAPTER 10: METHOD OF INTEGRATION]
+============================================================
+
+[TOPIC 10.1: ANTIDERIVATIVES]
+∫xⁿ dx = xⁿ⁺¹/(n+1) + C (n ≠ -1).
+∫1/x dx = ln|x| + C.
+∫eˣ dx = eˣ + C.
+∫cos x dx = sin x + C.
+∫sin x dx = -cos x + C.
+∫sec² x dx = tan x + C.
+
+[TOPIC 10.2: SUBSTITUTION METHOD]
+∫f(g(x))g'(x) dx = ∫f(u) du where u = g(x).
+
+[TOPIC 10.3: INTEGRATION BY PARTS]
+∫u dv = uv - ∫v du.
+
+[TOPIC 10.4: PARTIAL FRACTION METHOD]
+Decompose rational function into simpler fractions:
+(px+q)/(x²+ax+b) = A/(x-α) + B/(x-β).
+
+============================================================
+[CHAPTER 11: APPLICATION OF INTEGRATION]
+============================================================
+
+[TOPIC 11.1: DEFINITE INTEGRAL]
+∫ₐᵇ f(x) dx = F(b) - F(a) where F is antiderivative.
+Properties: ∫ₐᵇ cf(x) dx = c∫ₐᵇ f(x) dx, ∫ₐᵇ [f(x)±g(x)] dx = 
+∫ₐᵇ f(x) dx ± ∫ₐᵇ g(x) dx.
+
+[TOPIC 11.2: AREA BETWEEN CURVES]
+Area between y=f(x) and y=g(x) from x=a to x=b: 
+A = ∫ₐᵇ |f(x)-g(x)| dx.
+
+[TOPIC 11.3: VOLUMES]
+Disk method: V = π∫ₐᵇ [f(x)]² dx.
+Washer method: V = π∫ₐᵇ ([f(x)]² - [g(x)]²) dx.
+Cross-section method: V = ∫ₐᵇ A(x) dx.
+
+============================================================
+SUBJECT: ENGLISH
+============================================================
+
+[UNIT 1: GOOD MANNERS]
+============================================================
+
+[TOPIC 1A: READING - GOOD MANNERS]
+Manners - way of doing something. Manner can be good or bad, polite 
+or impolite. Some manners are universal, some are culture-specific. 
+Home is birthplace of manners. Children imitate elders. School 
+imparts manners. Celebrities and work domain influence manners.
+
+[TOPIC 1B: VOCABULARY - COMPOUND NOUNS/ADJECTIVES]
+Compound nouns: role model (n+n), ill manner (adj+n), washing machine 
+(v-ing+n), check-in (v+prep), underdog (prep+n), son-in-law 
+(n+prepositional phrase).
+Compound adjectives: well-mannered (adv+past participle), 
+arms-folded (noun+past participle), law-abiding (noun+present 
+participle), culture-specific (noun+adjective).
+
+[TOPIC 1C: GRAMMAR - MODAL AUXILIARIES]
+Can - permission, physical ability, acquired skill, possibility.
+Should - necessity, obligation, advisability.
+Must - necessity, obligation, prohibition (mustn't).
+
+[UNIT 2: KEY TO HAPPINESS]
+============================================================
+
+[TOPIC 2A: READING - KEY TO HAPPINESS]
+Ten ways to achieve happiness:
+1. Good relationship with friends and family
+2. Love your work and enjoy what you are doing
+3. Be kind and help others
+4. Don't be envious of other people
+5. Have better physical and mental health
+6. Have a feeling of contentment
+7. Get rich
+8. Have a positive attitude to life
+9. Have a sense of purpose and meaning
+10. Practice meditation
+
+[TOPIC 2B: VOCABULARY - SYNONYMS]
+Synonyms: accomplish=achieve, relaxed=free and easy, 
+satisfaction=contentment, prosperous=wealthy, envious=jealous, 
+depressed=miserable, attitude=outlook, mood=feeling, benefit=advantage, 
+fatigue=tiredness.
+
+[TOPIC 2C: GRAMMAR - RELATIVE CLAUSES]
+Defining relative clause: identifies noun, no commas. 
+Non-defining: extra information, has commas. 
+Relative pronouns: who, whom, whose, which, that.
+
+[UNIT 3: DIET AND NUTRITION]
+============================================================
+
+[TOPIC 3A: READING - DIET AND NUTRITION]
+Nutrients: carbohydrates, vitamins, minerals, dietary fibre, proteins, 
+lipids. Foods classified into grains, fruits, vegetables, milk products, 
+animal products, beans, and oils.
+
+Nutritious diet - mixture of nutrients needed for body. Environmental 
+factors influence diet and nutrition. Effects of poor nutrition: 
+malnutrition, obesity, chronic diseases.
+
+Forests are source of foods (mushrooms, bamboo shoots, nuts, berries, 
+leaves, tubers). Deforestation causes loss of biodiversity and nutrition.
+
+[TOPIC 3B: VOCABULARY - AFFIXES]
+Prefixes: mal- (malnutrition), de- (deforestation).
+Suffixes: -tion (consumption), -ation (recommendation), -al (medical), 
+-able (avoidable), -ive (protective).
+
+[TOPIC 3C: GRAMMAR - PARTICIPLE PHRASES]
+Present participle (reading), past participle (disappointed), perfect 
+participle (having finished). Used to give information economically.
+
+Not only... but also: used to present two qualities. Inversion after 
+"not only" at beginning.
+
+[UNIT 4: EMOTIONAL WELL-BEING]
+============================================================
+
+[TOPIC 4A: READING - EMOTIONAL WELL-BEING]
+Positive emotions: delight, joy, sympathy, empathy, rapture, trust, 
+love. Negative emotions: anger, fear, anxiety, jealousy, grief, greed, 
+hatred.
+
+Emotional well-being essential for seeking happiness and life 
+satisfaction. Requires resilience, recovery, patience, humility, 
+integrity.
+
+[TOPIC 4B: VOCABULARY - ED AND ING ADJECTIVES]
+-ed adjectives: describe how we feel (bored, surprised, tired).
+-ing adjectives: describe thing/person that makes us feel (boring, 
+surprising, tiring).
+
+[TOPIC 4C: GRAMMAR - ADJECTIVES WITH PREPOSITIONS]
+Common patterns: good at, upset by, scared of, excited about, 
+interested in, pleased with, bored with, angry with, fed up with, 
+aware of.
+
+[UNIT 5: COLOURS]
+============================================================
+
+[TOPIC 5A: READING - COLOURS]
+Colour idioms: feel blue (sad), out of the blue (unexpected), 
+once in a blue moon (rarely), green fingers (gardening skill), 
+greenhorn (inexperienced), green light (permission), in the pink 
+(healthy), see red (angry), in the red (in debt), yellow (cowardly).
+
+[TOPIC 5B: VOCABULARY - COLOUR IDIOMS]
+Black and blue (beaten), black and white (clear), black out 
+(lose consciousness), black market (illegal trading), green with envy 
+(jealous), white elephant (useless possession), white lie (harmless 
+lie), with flying colours (great success).
+
+[TOPIC 5C: GRAMMAR - SUBORDINATING CONJUNCTIONS]
+Time: when, after, before, as, as soon as, since, once, until, while.
+Place: where, wherever. Manner: as, as if, as though.
+Reason: because, as, since. Purpose: so that, in order that.
+Result: so...that, such...that. Condition: if, unless, provided that.
+Contrast: although, though, even though.
+
+[UNIT 6: ARTIFICIAL INTELLIGENCE]
+============================================================
+
+[TOPIC 6A: READING - ARTIFICIAL INTELLIGENCE]
+AI - machine's ability to perform cognitive functions like perceiving, 
+reasoning, solving problems. Industry 4.0. Applications: text editor, 
+auto-correction, facial recognition, self-driving cars, Google Maps, 
+hospital robots, unmanned spacecraft.
+
+Drawbacks: expensive to create, high risk of unemployment, dangerous 
+in wrong hands.
+
+[TOPIC 6B: VOCABULARY - ADVERBIAL PHRASES]
+as a result, in other words, such as, since the turn of, as a matter 
+of fact, all the way, so far, way too + adj, on top of that, to a 
+certain extent, here and there.
+
+[TOPIC 6C: GRAMMAR - NO MATTER...]
+No matter who/whose/what/which/where/when/how/whether...
+Used to express contrast. Present tense in no matter clause refers 
+to future.
+
+[UNIT 7: POLLUTION]
+============================================================
+
+[TOPIC 7A: READING - POLLUTION]
+Greenhouse effect - Gases trap sun's heat. Gases: CO₂, CH₄, N₂O, 
+ozone, CFCs, water vapour. Increased greenhouse gases cause global 
+warming and climate change.
+
+Air pollution - from fuel burning, logging, farming, mining, 
+manufacturing. Causes acid rain, ozone depletion.
+
+Water pollution - from mining waste, agricultural/industrial runoff, 
+human/animal waste dumped in water bodies.
+
+Soil pollution - from fertilisers, pesticides, wastes, deforestation.
+
+Noise pollution - from construction, industrial areas, transport, 
+cultural activities. Causes hypertension, hearing loss, emotional 
+problems.
+
+Light pollution - overuse of artificial outdoor light. Disrupts 
+diurnal, nocturnal, crepuscular patterns.
+
+[TOPIC 7B: VOCABULARY - POLLUTION WORDS]
+Deforestation, urbanization, industrialization, digital wastes, 
+sleep deprivation, contaminated, constrict, ozone depletion, 
+fossil fuels, soil erosion.
+
+[TOPIC 7C: GRAMMAR - CAUSE AND EFFECT]
+Verbs: cause, lead to, result in, bring about.
+Linking words: because of, as a result, due to, consequently, 
+as a consequence, owing to.
+
+[UNIT 8: RENEWABLE ENERGY]
+============================================================
+
+[TOPIC 8A: READING - RENEWABLE ENERGY]
+Hydropower - moving water turns turbines. Drawbacks: negative effect 
+on aquatic wildlife, flooding behind dams.
+
+Wind power - wind turns turbines. Drawbacks: stops when wind stops, 
+threat to birds and bats.
+
+Solar energy - photovoltaic cells convert sunlight. Benefits: controls 
+air pollution, no noise, renewable. Drawback: large area needed.
+
+Biomass - from dead plant and animal materials. Benefits: re-grows 
+quickly. Drawback: produces greenhouse gases, expensive on large scale.
+
+Geothermal energy - heat from within earth. Benefits: simple 
+technology, no pollution. Drawback: high initial costs.
+
+[TOPIC 8B: VOCABULARY - ENERGY COLLOCATIONS]
+Pollution: air/water/noise/radioactive/light pollution.
+Energy: wind/ocean/renewable/green/solar energy.
+Fuel: diesel/fossil/clean/alternative/biomass fuel.
+
+[TOPIC 8C: GRAMMAR - CONDITIONALS]
+Zero conditional: If + present, present (general truths).
+First conditional: If + present, will (possible future).
+Second conditional: If + past, would (imaginary present/future).
+Third conditional: If + past perfect, would have + past participle 
+(past unreal).
+
+[UNIT 9: HELEN KELLER]
+============================================================
+
+[TOPIC 9A: READING - HELEN KELLER]
+Helen Keller (1880-1968) became blind and deaf at 19 months. 
+Annie Sullivan became her teacher in 1887. Annie taught Helen 
+language by spelling into her hand. Helen understood "water" at 
+the water pump. Helen later became a famous author and activist.
+
+[TOPIC 9B: VOCABULARY - PHRASAL VERBS]
+set off (start journey), give up (stop doing), turn up (arrive), 
+count on (depend on), carry out (do work), pass on (give to someone), 
+get over (recover), come across (find by chance), burn down 
+(destroy with fire), work out (do exercise).
+
+[TOPIC 9C: GRAMMAR - VERBS + NOUN GROUP + INFINITIVE]
+Bare infinitive: make/let/help/feel/notice + object + verb.
+To-infinitive: ask/tell/advise/warn/order + object + to-verb.
+
+[UNIT 10: WHY IMPROVE COMMUNICATION SKILLS?]
+============================================================
+
+[TOPIC 10A: READING - COMMUNICATION SKILLS]
+Communication skills: convey ideas, feelings, attitudes, needs in 
+precise and lucid manner. Non-verbal features: facial expressions, 
+posture, gestures, tone of voice, eye contact, proximity.
+
+Prerequisites: overcoming shyness, awareness of audience, awareness 
+of setting, relevant knowledge, informative communication, time 
+awareness, relevance, organisation, giving turns, examples and humour, 
+polite language, appropriate tone and gestures.
+
+[TOPIC 10B: VOCABULARY - COMMUNICATION WORDS]
+Communication, translate, interpret, information, informative, 
+interact, conversation, comprehensible.
+
+[TOPIC 10C: GRAMMAR - PURPOSE CLAUSES]
+to/in order to/so as to + infinitive.
+so that/in order that + clause (can use modal verbs).
+
+[UNIT 11: A DAY'S WAIT]
+============================================================
+
+[TOPIC 11A: READING - A DAY'S WAIT]
+Short story by Ernest Hemingway. Schatz (9-year-old boy) has fever 
+102°F. He thinks he will die because at school in France he learned 
+that 44°C (104°F) is fatal. Father explains difference between 
+Fahrenheit and Celsius. Boy had been waiting to die all day.
+
+[TOPIC 11B: VOCABULARY - ILLNESS WORDS]
+Influenza (flu), pneumonia, fever, headache, shivering, purgative, 
+capsules, epidemic, acid condition.
+
+[TOPIC 11C: GRAMMAR - AS IF / AS THOUGH]
+Use as if/as though for comparisons. Imaginary situation uses 
+"were" instead of "was". Commonly follow feel and look.
+
+[UNIT 12: INTERCULTURAL COMMUNICATION]
+============================================================
+
+[TOPIC 12A: READING - INTERCULTURAL COMMUNICATION]
+Culture of saving face (Japan) - avoid saying "no" directly.
+Gender roles (Brazil) - women don't initiate dating requests.
+Non-verbal communication (Italy and U.S.) - gestures can have 
+different meanings.
+Naming systems (Korea and Myanmar) - family name vs. given name.
+
+[TOPIC 12B: VOCABULARY - ASPECTS OF CULTURE]
+Language, norms, rituals, symbols, values, beliefs.
+
+[TOPIC 12C: GRAMMAR - RELATIVE PRONOUNS AND ADVERBS]
+who (subject), whom (object), whose (possession), which (things), 
+that (subject/object for things).
+where (place), when (time), why (reason).
+
+============================================================
+SUBJECT: ECONOMICS
+============================================================
+
+[CHAPTER 1: INTRODUCTION TO ECONOMICS]
+============================================================
+
+[TOPIC 1.1: DEFINITION OF ECONOMICS]
+Economics is the study of how individuals, firms, and societies 
+choose to allocate scarce resources to satisfy unlimited wants. 
+Scarcity - limited resources relative to unlimited wants.
+
+[TOPIC 1.2: KEY ECONOMIC CONCEPTS]
+Opportunity cost - the value of the next best alternative forgone.
+Choice - selecting among alternatives due to scarcity.
+Trade-offs - all choices involve giving up something.
+
+[TOPIC 1.3: ECONOMIC SYSTEMS]
+Market economy - decisions by individuals and firms.
+Command economy - decisions by government.
+Mixed economy - combination of market and command.
+
+[TOPIC 1.4: PRODUCTION POSSIBILITIES CURVE]
+Shows maximum combinations of two goods that can be produced with 
+available resources. Points: inside = inefficient, on = efficient, 
+outside = unattainable. Shifts = economic growth.
+
+============================================================
+[CHAPTER 2: DEMAND AND SUPPLY]
+============================================================
+
+[TOPIC 2.1: DEMAND]
+Law of demand - as price increases, quantity demanded decreases 
+(ceteris paribus). Demand curve slopes downward.
+
+Determinants of demand: income, prices of related goods, tastes, 
+expectations, number of buyers.
+
+[TOPIC 2.2: SUPPLY]
+Law of supply - as price increases, quantity supplied increases 
+(ceteris paribus). Supply curve slopes upward.
+
+Determinants of supply: prices of inputs, technology, expectations, 
+number of sellers, taxes and subsidies.
+
+[TOPIC 2.3: MARKET EQUILIBRIUM]
+Equilibrium price and quantity where demand equals supply.
+Surplus: price above equilibrium, quantity supplied exceeds 
+quantity demanded. Shortage: price below equilibrium, quantity 
+demanded exceeds quantity supplied.
+
+[TOPIC 2.4: ELASTICITY]
+Price elasticity of demand - measures responsiveness of quantity 
+demanded to price change.
+E_d = (%ΔQd)/(%ΔP).
+Elastic: |E_d| > 1, Inelastic: |E_d| < 1, Unit elastic: |E_d| = 1.
+
+Cross elasticity: responsiveness of demand for one good to price 
+change of another good. Income elasticity: responsiveness of demand 
+to income change.
+
+============================================================
+[CHAPTER 3: THEORY OF PRODUCTION]
+============================================================
+
+[TOPIC 3.1: PRODUCTION FUNCTION]
+Shows relationship between inputs and outputs. Q = f(L, K) for 
+short-run (capital fixed) and Q = f(L, K) for long-run (all 
+inputs variable).
+
+[TOPIC 3.2: SHORT-RUN PRODUCTION]
+Total product (TP) - total output.
+Average product (AP) = TP/L.
+Marginal product (MP) = ΔTP/ΔL.
+
+Law of diminishing marginal returns - as more units of a variable 
+input are added to fixed inputs, marginal product eventually 
+diminishes.
+
+[TOPIC 3.3: STAGES OF PRODUCTION]
+Stage 1: MP increasing, AP increasing (increasing returns).
+Stage 2: MP decreasing but positive, AP decreasing (diminishing 
+returns) - rational producer operates here.
+Stage 3: MP negative (negative returns).
+
+============================================================
+[CHAPTER 4: COSTS OF PRODUCTION]
+============================================================
+
+[TOPIC 4.1: TYPES OF COSTS]
+Explicit costs - actual monetary payments (wages, rent, materials).
+Implicit costs - opportunity costs of using owner's resources 
+(normal profit, foregone interest).
+
+[TOPIC 4.2: SHORT-RUN COSTS]
+Fixed costs (FC) - do not vary with output (rent, insurance).
+Variable costs (VC) - vary with output (wages, materials).
+Total cost (TC) = FC + VC.
+Average fixed cost (AFC) = FC/Q.
+Average variable cost (AVC) = VC/Q.
+Average total cost (ATC) = TC/Q = AFC + AVC.
+Marginal cost (MC) = ΔTC/ΔQ = ΔVC/ΔQ.
+
+Cost curves: AFC downward sloping, AVC U-shaped, ATC U-shaped, 
+MC U-shaped. MC intersects ATC and AVC at their minimum points.
+
+============================================================
+[CHAPTER 5: MARKET STRUCTURES]
+============================================================
+
+[TOPIC 5.1: PERFECT COMPETITION]
+Many firms, identical products, free entry and exit, perfect 
+information. Price takers. In short-run: P = MR = MC for profit 
+maximization. Supernormal profits if P > ATC, losses if P < ATC, 
+normal profits if P = ATC. In long-run: firms earn normal profit 
+(P = ATC = MC).
+
+[TOPIC 5.2: MONOPOLY]
+One firm, unique product, barriers to entry. Price maker. 
+Profit maximizing: MR = MC. Price determined by demand curve. 
+Can earn supernormal profits in long-run.
+
+Barriers to entry: economies of scale, patents, government licenses, 
+control of resources.
+
+[TOPIC 5.3: OLIGOPOLY]
+Few firms, strategic interdependence. Products may be homogeneous 
+or differentiated. Barriers to entry. Price rigidity (kinked demand 
+curve). Cartels: collusion to maximize joint profits.
+
+[TOPIC 5.4: MONOPOLISTIC COMPETITION]
+Many firms, differentiated products, free entry and exit. 
+Non-price competition (advertising, branding). In short-run: 
+can earn supernormal profits. In long-run: normal profits (P = ATC).
+
+============================================================
+[CHAPTER 6: BUSINESS MANAGEMENT]
+============================================================
+
+[TOPIC 6.1: PRODUCTION AND OPERATIONS MANAGEMENT]
+Production - creating goods. Operations - processes that transform 
+inputs to outputs. Supply chain - flow of materials from suppliers 
+to customers.
+
+[TOPIC 6.2: MARKETING MANAGEMENT]
+Marketing - identifying and satisfying customer needs. Marketing 
+orientation evolution: production orientation → product orientation 
+→ selling orientation → marketing orientation.
+
+Marketing mix (4Ps): Product, Price, Place, Promotion.
+
+[TOPIC 6.3: FINANCIAL MANAGEMENT]
+Financial management - planning, organising, directing, controlling 
+financial activities. Financial statements: profit and loss account, 
+balance sheet, cash flow statement.
+
+[TOPIC 6.4: HUMAN RESOURCE MANAGEMENT]
+HRM - managing people in organisation. Functions: recruitment, 
+selection, training, performance appraisal, compensation.
+
+[TOPIC 6.5: SMALL BUSINESS MANAGEMENT]
+Sole proprietorship - one owner. Partnership - two or more owners. 
+Company - separate legal entity. Small business challenges: limited 
+resources, competition, access to finance.
+
+============================================================
+[CHAPTER 7: ECONOMIC GROWTH]
+============================================================
+
+[TOPIC 7.1: NOMINAL AND REAL GDP]
+Nominal GDP - valued at current prices (includes inflation).
+Real GDP - valued at constant prices (adjusted for inflation).
+GDP deflator = (Nominal GDP/Real GDP) × 100.
+
+[TOPIC 7.2: ECONOMIC GROWTH RATE]
+Growth rate = [(Real GDP₁ - Real GDP₀)/Real GDP₀] × 100.
+
+[TOPIC 7.3: GDP DEFLATOR]
+Measures changes in price level of all goods produced domestically.
+
+[TOPIC 7.4: BUSINESS CYCLE]
+Patterns of expansion and contraction. Phases: peak, recession, 
+trough, recovery.
+
+[TOPIC 7.5: LONG-RUN ECONOMIC GROWTH]
+Sources: physical capital, human capital, technological progress, 
+natural resources. Capital deepening - increasing capital per worker.
+
+[TOPIC 7.6: MACROECONOMIC EQUILIBRIUM]
+Equilibrium output where AD = AS. Short-run: economy can be above 
+or below full employment. Long-run: equilibrium at full employment 
+output.
+
+[TOPIC 7.7: STABILIZATION POLICIES]
+Fiscal policy - government spending and taxation.
+Monetary policy - money supply and interest rates (controlled by 
+central bank).
+
+============================================================
+[CHAPTER 8: INTERNATIONAL ECONOMICS]
+============================================================
+
+[TOPIC 8.1: FOREIGN EXCHANGE]
+Exchange rate - price of one currency in terms of another.
+Floating exchange rate - determined by market forces.
+Fixed exchange rate - government sets the rate.
+Managed float - combination.
+
+[TOPIC 8.2: BALANCE OF PAYMENTS]
+Record of all economic transactions between residents of one country 
+and the rest of the world. Components: current account (trade in 
+goods and services, income, transfers), capital account (financial 
+transactions).
+
+[TOPIC 8.3: BALANCE OF PAYMENTS ADJUSTMENT]
+Methods: exchange rate changes, monetary policy, fiscal policy, 
+trade controls, borrowing reserves.
+
+[TOPIC 8.4: ECONOMIC INTEGRATION]
+Levels: preferential trade arrangements, free trade areas, customs 
+unions, common market, economic unions, economic and monetary unions.
+
+ASEAN - Association of Southeast Asian Nations. 10 member countries. 
+AEC (ASEAN Economic Community) - aims for free flow of goods, services, 
+investment, skilled labour, capital.
+
+============================================================
+END OF RAG CONTENT
+============================================================
