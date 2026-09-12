@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../services/supabase_service.dart';
-import 'books_screen.dart';
-import 'package:ai_project/views/userPage.dart'; // သင့် userPage file လမ်းကြောင်း
 
-// User Login ဝင်ရောက်ရန် Form ပါဝင်သော စာမျက်နှာ
+import 'package:ai_project/views/books_screen.dart';
+import 'package:ai_project/views/userPage.dart';
+import 'package:ai_project/services/appwrite_service.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -12,107 +12,220 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // Input fields များမှ စာသားများကို ဖမ်းယူရန် Controller များ
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  // Supabase Database နှင့် ဆက်သွယ်ရန် Service Object
-  final SupabaseService _supabaseService = SupabaseService();
+  final AppwriteService _appwriteService = AppwriteService();
 
-  // Login လုပ်နေစဉ် Loading ပြသရန် အခြေအနေပြ Variable
   bool _isLoading = false;
 
-  // Login စစ်ဆေးခြင်း လုပ်ဆောင်ပေးသည့် Method
   void _handleLogin() async {
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
 
-    // --- အသစ်ထည့်ထားသော Logic ---
-    // Email နှင့် Password အလွတ်ဖြစ်နေပါက UserPage သို့ တိုက်ရိုက်သွားရန် (Shortcut)
     if (email.isEmpty && password.isEmpty) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const HomeView()),
       );
-      return; // အောက်က Supabase login အဆင့်များကို ဆက်မလုပ်တော့ဘဲ ရပ်လိုက်ပါမည်
+      return; 
     }
-    // ----------------------------
 
-    setState(() => _isLoading = true); // Loading စတင်ပြသခြင်း
+    setState(() => _isLoading = true);
 
-    // Supabase တွင် User အကောင့်နှင့် Paid Status ကို စစ်ဆေးခြင်း
-    final isPaid = await _supabaseService.loginPaidUser(email, password);
+    final isPaid = await _appwriteService.loginPaidUser(email, password);
 
-    setState(() => _isLoading = false); // Loading ပိတ်ခြင်း
+    setState(() => _isLoading = false);
 
     if (isPaid && mounted) {
-      // Login အောင်မြင်ပါက BooksScreen သို့ လုံးဝ ကူးပြောင်းခြင်း (Back ပြန်ခေါ်မရစေရန် pushReplacement သုံးသည်)
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const BooksScreen()),
       );
     } else if (mounted) {
-      // Login မအောင်မြင်ပါက အသိပေးစာ ပြသခြင်း
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Login failed or not a paid account!')),
+        const SnackBar(content: Text('Login failed or not a premium account!')),
       );
     }
   }
 
   @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      // ထိပ်ဆုံးတွင် Back Arrow Button ပါဝင်သော AppBar
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Color(0xFFFF5A5A)),
-          onPressed: () {
-            // ယခင်ရောက်ခဲ့သော LandingScreen သို့ ပြန်သွားရန် Method
-            Navigator.pop(context);
-          },
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFF0D0B2B), Color(0xFF1E2CB8)],
+          ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // အီးမေးလ် ရိုက်ထည့်ရန် အကွက်
-            TextField(
-              controller: _emailController,
-              decoration: const InputDecoration(labelText: 'Username / Email:'),
-            ),
-            const SizedBox(height: 16),
-
-            // လျှို့ဝှက်နံပါတ် ရိုက်ထည့်ရန် အကွက်
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: const InputDecoration(labelText: 'Password:'),
-            ),
-            const SizedBox(height: 30),
-
-            // Login စတင် အလုပ်လုပ်မည့် ခလုတ်
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFFF5A5A),
-                  padding: const EdgeInsets.symmetric(vertical: 14),
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF2948FF),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(24),
+                    bottomRight: Radius.circular(24),
+                  ),
                 ),
-                onPressed: _isLoading ? null : _handleLogin,
-                child: _isLoading
-                    ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text(
-                        'Login',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back, color: Colors.white, size: 26),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    const SizedBox(width: 8),
+                    const Text(
+                      'G-12 Guidance',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                child: Center(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                    child: Container(
+                      padding: const EdgeInsets.all(24),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFD3D8E2),
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Image.asset(
+                            'assets/logo1.png',
+                            height: 150,
+                            errorBuilder: (context, error, stackTrace) => const Icon(
+                              Icons.school,
+                              size: 80,
+                              color: Color(0xFF2948FF),
+                            ),
+                          ),
+                          const SizedBox(height: 32),
+                          TextField(
+                            controller: _emailController,
+                            style: const TextStyle(color: Colors.black),
+                            decoration: const InputDecoration(
+                              labelText: 'Username:',
+                              labelStyle: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black, width: 2),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color(0xFF2948FF), width: 2),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 18),
+                          TextField(
+                            controller: _passwordController,
+                            obscureText: true,
+                            style: const TextStyle(color: Colors.black),
+                            decoration: const InputDecoration(
+                              labelText: 'Password:',
+                              labelStyle: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black, width: 2),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color(0xFF2948FF), width: 2),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextButton(
+                              onPressed: () {},
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                              child: const Text(
+                                'forgot_password',
+                                style: TextStyle(
+                                  color: Color(0xFF2948FF),
+                                  fontSize: 13,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 28),
+                          Container(
+                            width: double.infinity,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF2948FF),
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black54,
+                                  offset: Offset(0, 4),
+                                  blurRadius: 0,
+                                ),
+                              ],
+                            ),
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(12),
+                                onTap: _isLoading ? null : _handleLogin,
+                                child: Center(
+                                  child: _isLoading
+                                      ? const SizedBox(
+                                          height: 20,
+                                          width: 20,
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 2,
+                                            color: Colors.white,
+                                          ),
+                                        )
+                                      : const Text(
+                                          'login',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
