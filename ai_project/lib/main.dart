@@ -24,7 +24,7 @@ import 'package:ai_project/views/quiz_screen.dart';
 // ==========================================
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: "assets/env");
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 

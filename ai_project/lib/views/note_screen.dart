@@ -1,30 +1,19 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../services/notes_service.dart';
 
-// --- Note Data Model ---
-class Note {
-  String title;
-  String content;
-  DateTime date;
-
-  Note({required this.title, required this.content, required this.date});
-
-  Map<String, dynamic> toJson() => {
-        'title': title,
-        'content': content,
-        'date': date.toIso8601String(),
-      };
-
-  factory Note.fromJson(Map<String, dynamic> json) => Note(
-        title: json['title'],
-        content: json['content'],
-        date: DateTime.parse(json['date']),
-      );
+// Content ထဲမှ Markdown သင်္ကေတများဖယ်ရှားပြီး * ကို • သို့ ပြောင်းပေးသည့် global helper function
+String cleanNoteRawContent(String raw) {
+  return raw
+      .replaceAll(RegExp(r'^###\s*', multiLine: true), '')
+      .replaceAll(RegExp(r'^\>\s*', multiLine: true), '')
+      .replaceAll('**', '')
+      .replaceAll(RegExp(r'^---\s*$', multiLine: true), '')
+      .replaceAll(RegExp(r'^\*\s+', multiLine: true), '• ')
+      .trim();
 }
 
-// --- Main Notes List Screen ---
 class NoteScreen extends StatefulWidget {
   const NoteScreen({super.key});
 
@@ -34,29 +23,22 @@ class NoteScreen extends StatefulWidget {
 
 class _NoteScreenState extends State<NoteScreen> {
   List<Note> _notes = [];
-  SharedPreferences? _prefs;
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _loadNotes();
+    _fetchNotes();
   }
 
-  Future<void> _loadNotes() async {
-    _prefs = await SharedPreferences.getInstance();
-    final String? notesJson = _prefs?.getString('saved_notes');
-    if (notesJson != null) {
-      final List<dynamic> decoded = jsonDecode(notesJson);
+  Future<void> _fetchNotes() async {
+    final data = await NotesService.getNotes();
+    if (mounted) {
       setState(() {
-        _notes = decoded.map((item) => Note.fromJson(item)).toList();
+        _notes = data;
+        _isLoading = false;
       });
     }
-  }
-
-  Future<void> _saveNotes() async {
-    if (_prefs == null) return;
-    final String encoded = jsonEncode(_notes.map((note) => note.toJson()).toList());
-    await _prefs?.setString('saved_notes', encoded);
   }
 
   Future<void> _navigateToEditor([Note? existingNote, int? index]) async {
@@ -68,25 +50,20 @@ class _NoteScreenState extends State<NoteScreen> {
     );
 
     if (result != null && result is Note) {
-      setState(() {
-        if (index != null) {
-          _notes[index] = result;
-        } else {
-          _notes.insert(0, result);
-        }
-      });
-      _saveNotes();
+      if (index != null) {
+        await NotesService.updateNote(index, result);
+      } else {
+        await NotesService.addNote(result.title, result.content, result.date);
+      }
+      await _fetchNotes();
     }
   }
 
-  void _deleteNote(int index) {
-    setState(() {
-      _notes.removeAt(index);
-    });
-    _saveNotes();
+  Future<void> _deleteNote(int index) async {
+    await NotesService.deleteNote(index);
+    await _fetchNotes();
   }
 
-  // Note ဖျက်ရန် သေချာ/မသေချာ အတည်ပြုချက် မေးမည့် Dialog
   void _confirmDelete(int index) {
     showDialog(
       context: context,
@@ -101,9 +78,9 @@ class _NoteScreenState extends State<NoteScreen> {
               child: const Text("Cancel", style: TextStyle(color: Colors.grey)),
             ),
             TextButton(
-              onPressed: () {
+              onPressed: () async {
                 Navigator.pop(context);
-                _deleteNote(index);
+                await _deleteNote(index);
               },
               child: const Text("Delete", style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold)),
             ),
@@ -123,16 +100,18 @@ class _NoteScreenState extends State<NoteScreen> {
         iconTheme: const IconThemeData(color: Colors.white),
         elevation: 0,
       ),
-      body: _notes.isEmpty
-          ? _buildEmptyState()
-          : ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: _notes.length,
-              itemBuilder: (context, index) {
-                final note = _notes[index];
-                return _buildNoteCard(note, index);
-              },
-            ),
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : _notes.isEmpty
+              ? _buildEmptyState()
+              : ListView.builder(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: _notes.length,
+                  itemBuilder: (context, index) {
+                    final note = _notes[index];
+                    return _buildNoteCard(note, index);
+                  },
+                ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF76C843),
         onPressed: () => _navigateToEditor(),
@@ -186,7 +165,6 @@ class _NoteScreenState extends State<NoteScreen> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Note အကြောင်းအရာများ
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -199,8 +177,11 @@ class _NoteScreenState extends State<NoteScreen> {
                           overflow: TextOverflow.ellipsis,
                         ),
                       if (note.title.isNotEmpty) const SizedBox(height: 6),
+                      // ✨ Card ပေါ်တွင်လည်း clean လုပ်ထားသော စာသားကို တိုက်ရိုက် ပြသပေးခြင်း
                       Text(
-                        note.content.isEmpty ? "No additional text" : note.content,
+                        note.content.isEmpty
+                            ? "No additional text"
+                            : cleanNoteRawContent(note.content),
                         style: TextStyle(fontSize: 15, color: Colors.grey[700], height: 1.4),
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
@@ -213,7 +194,6 @@ class _NoteScreenState extends State<NoteScreen> {
                     ],
                   ),
                 ),
-                // Delete Button
                 IconButton(
                   icon: const Icon(Icons.delete_outline, color: Colors.redAccent, size: 24),
                   tooltip: 'Delete Note',
@@ -240,12 +220,17 @@ class NoteEditorScreen extends StatefulWidget {
 class _NoteEditorScreenState extends State<NoteEditorScreen> {
   late TextEditingController _titleController;
   late TextEditingController _contentController;
+  bool _isEditing = false;
 
   @override
   void initState() {
     super.initState();
     _titleController = TextEditingController(text: widget.note?.title ?? '');
-    _contentController = TextEditingController(text: widget.note?.content ?? '');
+    
+    final cleaned = cleanNoteRawContent(widget.note?.content ?? '');
+    _contentController = TextEditingController(text: cleaned);
+
+    _isEditing = (widget.note == null);
   }
 
   @override
@@ -253,6 +238,17 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
     _titleController.dispose();
     _contentController.dispose();
     super.dispose();
+  }
+
+  Future<void> _launchUrlLink(String urlString) async {
+    final url = Uri.parse(urlString);
+    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('လင့်ခ်ကို ဖွင့်၍ မရနိုင်ပါ')),
+        );
+      }
+    }
   }
 
   void _saveAndPop() {
@@ -263,7 +259,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
       final newNote = Note(
         title: title,
         content: content,
-        date: DateTime.now(),
+        date: widget.note?.date ?? DateTime.now(),
       );
       Navigator.pop(context, newNote);
     } else {
@@ -285,6 +281,20 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
           elevation: 0,
           iconTheme: const IconThemeData(color: Colors.black87),
           actions: [
+            if (widget.note != null)
+              IconButton(
+                icon: Icon(
+                  _isEditing ? Icons.visibility_outlined : Icons.edit_outlined,
+                  color: const Color(0xFF2EB5FA),
+                  size: 24,
+                ),
+                tooltip: _isEditing ? 'View Mode' : 'Edit Text',
+                onPressed: () {
+                  setState(() {
+                    _isEditing = !_isEditing;
+                  });
+                },
+              ),
             IconButton(
               icon: const Icon(Icons.check, color: Color(0xFF76C843), size: 28),
               onPressed: _saveAndPop,
@@ -295,6 +305,7 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextField(
                   controller: _titleController,
@@ -306,26 +317,131 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
                     border: InputBorder.none,
                   ),
                 ),
+                const Divider(height: 1, thickness: 0.5),
+                const SizedBox(height: 10),
                 Expanded(
-                  child: TextField(
-                    controller: _contentController,
-                    autofocus: widget.note == null,
-                    style: const TextStyle(fontSize: 16, color: Colors.black87, height: 1.5),
-                    textCapitalization: TextCapitalization.sentences,
-                    maxLines: null,
-                    keyboardType: TextInputType.multiline,
-                    decoration: const InputDecoration(
-                      hintText: 'Type your note here...',
-                      hintStyle: TextStyle(color: Colors.black26, fontSize: 16),
-                      border: InputBorder.none,
-                    ),
-                  ),
+                  child: _isEditing
+                      ? TextField(
+                          controller: _contentController,
+                          autofocus: widget.note == null,
+                          style: const TextStyle(fontSize: 16, color: Colors.black87, height: 1.5),
+                          textCapitalization: TextCapitalization.sentences,
+                          maxLines: null,
+                          keyboardType: TextInputType.multiline,
+                          decoration: const InputDecoration(
+                            hintText: 'Type your note here...',
+                            hintStyle: TextStyle(color: Colors.black26, fontSize: 16),
+                            border: InputBorder.none,
+                          ),
+                        )
+                      : SingleChildScrollView(
+                          child: _buildFormattedContentView(_contentController.text),
+                        ),
                 ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  // Markdown symbols ရှင်းထုတ်ထားပြီး Subtitles (Little Bold)၊ Bullet Points (•) နှင့် Clickable Blue Links ပြသမည့် Widget
+  Widget _buildFormattedContentView(String text) {
+    final lines = text.split('\n');
+    final List<Widget> widgets = [];
+    final ytRegex = RegExp(r'\[(.*?)\]\((https?:\/\/.*?)\)');
+
+    for (var rawLine in lines) {
+      final line = rawLine.trim();
+      if (line.isEmpty) {
+        widgets.add(const SizedBox(height: 8));
+        continue;
+      }
+
+      // 1. YouTube Link ကို အပြာရောင်ဖြင့် နှိပ်နိုင်အောင် ပြုလုပ်ခြင်း
+      if (ytRegex.hasMatch(line)) {
+        final match = ytRegex.firstMatch(line)!;
+        final linkText = match.group(1) ?? 'YouTube Video';
+        final linkUrl = match.group(2) ?? '';
+
+        widgets.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: InkWell(
+              onTap: () => _launchUrlLink(linkUrl),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.video_library, size: 18, color: Colors.redAccent),
+                  const SizedBox(width: 8),
+                  Flexible(
+                    child: Text(
+                      linkText,
+                      style: const TextStyle(
+                        color: Color(0xFF1976D2), // Link အပြာရောင်
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      }
+      // 2. Subtitles များကို Little Bold ပုံစံဖော်ခြင်း
+      else if (line.contains('Textbook Reference') ||
+               line.contains('မြန်မာလို ရှင်းလင်းချက်') ||
+               line.startsWith('TOPIC')) {
+        widgets.add(
+          Padding(
+            padding: const EdgeInsets.only(top: 14, bottom: 6),
+            child: Text(
+              line,
+              style: const TextStyle(
+                fontSize: 16.5,
+                fontWeight: FontWeight.w600, // Little bold
+                color: Color(0xFF0288D1),
+                height: 1.4,
+              ),
+            ),
+          ),
+        );
+      }
+      // 3. Bullet Point (•) နှင့် သာမန်စာကြောင်းများ
+      else {
+        String displayLine = line;
+        if (displayLine.startsWith('* ')) {
+          displayLine = displayLine.replaceFirst('* ', '• ');
+        }
+        final bool isBullet = displayLine.startsWith('• ');
+
+        widgets.add(
+          Padding(
+            padding: EdgeInsets.only(
+              left: isBullet ? 12 : 0,
+              top: 3,
+              bottom: 3,
+            ),
+            child: Text(
+              displayLine,
+              style: const TextStyle(
+                fontSize: 15.5,
+                color: Colors.black87,
+                height: 1.6,
+              ),
+            ),
+          ),
+        );
+      }
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: widgets,
     );
   }
 }
